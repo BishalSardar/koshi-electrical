@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,5 +28,18 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // admin - profile route
-Route::get('/admin/profile', [HomeController::class, 'adminProfile'])->name('admin.profile');
-Route::get('/admin/profile/edit', [HomeController::class, 'adminProfileEdit'])->name('admin.profile.edit');
+Route::get('/admin/profile', [AdminProfileController::class, 'adminProfile'])->name('admin.profile');
+// admin profile edit route
+Route::get('/admin/profile/edit', [AdminProfileController::class, 'adminProfileEdit'])->name('admin.profile.edit');
+// admin profile update route
+Route::post("/admin/profile/update", [AdminProfileController::class, 'adminProfileUpdate'])->name('admin.profile.update');
+// admin password edit route
+Route::get("/admin/password/edit", [AdminProfileController::class, 'adminPasswordEdit'])->name('admin.password.edit');
+// admin password update route
+Route::post("/admin/password/update", [AdminProfileController::class, 'adminPasswordUpdate'])->name('admin.password.update');
+
+
+
+// product
+// product list route
+Route::get('/product/index', [ProductController::class, 'productIndex'])->name('profile.index');

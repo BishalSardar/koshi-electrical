@@ -151,9 +151,15 @@
                     <ul class="nav-main">
                         <li class="nav-main-item">
                             <a class="nav-main-link" href="{{ route('home') }}">
-                                <i class="nav-main-link-icon fa fa-location-arrow"></i>
+                                <i class="nav-main-link-icon fa fa-home"></i>
                                 <span class="nav-main-link-name">Dashboard</span>
                                 <span class="nav-main-link-badge badge rounded-pill bg-primary">8</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{{ route('home') }}">
+                                <i class="nav-main-link-icon fa fa-box"></i>
+                                <span class="nav-main-link-name">Product</span>
                             </a>
                         </li>
                     </ul>
@@ -212,6 +218,10 @@
                                 </a>
                                 {{-- <div role="separator" class="dropdown-divider"></div> --}}
 
+                                <a class="dropdown-item" href="{{ route('admin.password.edit') }}">
+                                    <i class="far fa-fw fa-pen-to-square me-1"></i> changePassword
+                                </a>
+
                                 <div role="separator" class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
@@ -219,7 +229,8 @@
                                     <i class="far fa-fw fa-arrow-alt-circle-left me-1"></i> Sign Out
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    class="d-none">
                                     @csrf
                                 </form>
                             </div>
