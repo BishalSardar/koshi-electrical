@@ -6,8 +6,13 @@
         <div class="bg-black-25">
             <div class="content content-full">
                 <div class="py-5 text-center">
-                    <img class="img-avatar img-avatar96 img-avatar-thumb"
-                        src="{{ asset('admin/media/avatars/avatar10.jpg') }}" alt="">
+                    @if (Auth::user()->profile_image == null)
+                        <img class="img-avatar img-avatar96 img-avatar-thumb"
+                            src="{{ asset('admin/media/avatars/avatar10.jpg') }}" alt="">
+                    @else
+                        <img class="img-avatar img-avatar96 img-avatar-thumb"
+                            src="{{ asset('admin/images/profile/' . Auth::user()->profile_image) }}" alt="">
+                    @endif
                     <h1 class="fw-bold my-2 text-white">{{ Auth::user()->name }}</h1>
                     <h2 class="h4 fw-bold text-white-75">
                         Email: {{ Auth::user()->email }}

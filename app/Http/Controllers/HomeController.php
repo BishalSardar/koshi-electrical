@@ -26,15 +26,5 @@ class HomeController extends Controller
         return view('home');
     }
 
-    // admin profile function
-    public function adminProfile()
-    {
-        return view('profile.index');
-    }
-
-    // admin profile edit function
-    public function adminProfileEdit()
-    {
-        return view('profile.edit');
-    }
+    
 }
