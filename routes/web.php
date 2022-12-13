@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +27,7 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-// admin - profile route
+// admin profile route
 Route::get('/admin/profile', [AdminProfileController::class, 'adminProfile'])->name('admin.profile');
 // admin profile edit route
 Route::get('/admin/profile/edit', [AdminProfileController::class, 'adminProfileEdit'])->name('admin.profile.edit');
@@ -42,4 +42,14 @@ Route::post("/admin/password/update", [AdminProfileController::class, 'adminPass
 
 // product
 // product list route
-Route::get('/product/index', [ProductController::class, 'productIndex'])->name('profile.index');
+Route::get('/product/index', [ProductController::class, 'productIndex'])->name('product.index');
+// product create route
+Route::get('/product/create', [ProductController::class, 'productCreate'])->name('product.create');
+// product store route
+Route::post("/product/store", [ProductController::class, 'productStore'])->name('product.store');
+//product edit route
+Route::get("/product/edit/{id}", [ProductController::class, 'productEdit'])->name('product.edit');
+//product update route
+Route::post("/product/update/{id}", [ProductController::class, 'productUpdate'])->name('product.update');
+//product delete route
+Route::get("/product/delete/{id}", [ProductController::class, 'productDelete'])->name('product.delete');
