@@ -77,6 +77,18 @@
                                 <span class="nav-main-link-name">Product</span>
                             </a>
                         </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{{ route('customer.index') }}">
+                                <i class="nav-main-link-icon fa fa-address-book"></i>
+                                <span class="nav-main-link-name">Customer</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{{ route('supplier.index') }}">
+                                <i class="nav-main-link-icon fa fa-industry"></i>
+                                <span class="nav-main-link-name">Supplier</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <!-- END Side Navigation -->
