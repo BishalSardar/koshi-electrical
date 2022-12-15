@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\AdminProfileController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SupplierController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,3 +55,42 @@ Route::get("/product/edit/{id}", [ProductController::class, 'productEdit'])->nam
 Route::post("/product/update/{id}", [ProductController::class, 'productUpdate'])->name('product.update');
 //product delete route
 Route::get("/product/delete/{id}", [ProductController::class, 'productDelete'])->name('product.delete');
+
+
+// customer
+// customer list route
+Route::get('/customer/index', [CustomerController::class, 'customerIndex'])->name('customer.index');
+// customer create route
+Route::get('/customer/create', [CustomerController::class, 'customerCreate'])->name('customer.create');
+// customer store route
+Route::post("/customer/store", [CustomerController::class, 'customerStore'])->name('customer.store');
+//customer edit route
+Route::get("/customer/edit/{id}", [CustomerController::class, 'customerEdit'])->name('customer.edit');
+//customer update route
+Route::post("/customer/update/{id}", [CustomerController::class, 'customerUpdate'])->name('customer.update');
+// customer delete route
+Route::get("/customer/delete/{id}", [CustomerController::class, 'customerDelete'])->name('customer.delete');
+// customer profile page route
+Route::get('/customer/profile/{id}', [CustomerController::class, 'customerProfile'])->name('customer.profile');
+
+
+
+// supplier
+// supplier list route
+Route::get("/supplier/index", [SupplierController::class, 'supplierIndex'])->name('supplier.index');
+//supplier list route
+// Route::get("/supplier/get", [SupplierController::class, 'supplierGet'])->name('supplier.get');
+//supplier post route
+// Route::post("/supplier/post", [SupplierController::class, 'supplierPost'])->name('supplier.post');
+//supplier edit route
+Route::get("/supplier/create", [SupplierController::class, 'supplierCreate'])->name('supplier.create');
+//supplier store route
+Route::post("/supplier/store", [SupplierController::class, 'supplierStore'])->name('supplier.store');
+//supplier edit route
+Route::get("/supplier/edit/{id}", [SupplierController::class, 'supplierEdit'])->name('supplier.edit');
+//supplier update route
+Route::post("/supplier/update/{id}", [SupplierController::class, 'supplierUpdate'])->name('supplier.update');
+//supplier delete route
+Route::get("/supplier/delete/{id}", [SupplierController::class, 'supplierDelete'])->name('supplier.delete');
+// supplier profile page route
+Route::get('/supplier/profile/{id}', [SupplierController::class, 'supplierProfile'])->name('supplier.profile');
