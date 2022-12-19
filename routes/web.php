@@ -41,8 +41,7 @@ Route::get("/admin/password/edit", [AdminProfileController::class, 'adminPasswor
 Route::post("/admin/password/update", [AdminProfileController::class, 'adminPasswordUpdate'])->name('admin.password.update');
 
 
-
-// products is very helpful
+// product
 // product list route
 Route::get('/product/index', [ProductController::class, 'productIndex'])->name('product.index');
 // product create route
