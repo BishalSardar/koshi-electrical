@@ -42,7 +42,7 @@ Route::post("/admin/password/update", [AdminProfileController::class, 'adminPass
 
 
 
-// product
+// products list
 // product list route
 Route::get('/product/index', [ProductController::class, 'productIndex'])->name('product.index');
 // product create route
