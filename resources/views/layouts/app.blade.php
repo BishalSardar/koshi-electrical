@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="{{ asset('admin/js/plugins/datatables-buttons-bs5/css/buttons.bootstrap5.min.css') }}">
     <link rel="stylesheet"
         href="{{ asset('admin/js/plugins/datatables-responsive-bs5/css/responsive.bootstrap5.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/js/plugins/select2/css/select2.min.css') }}">
 
 
     <!-- Dashmix framework -->
@@ -69,6 +70,12 @@
                             <a class="nav-main-link" href="{{ route('home') }}">
                                 <i class="nav-main-link-icon fa fa-home"></i>
                                 <span class="nav-main-link-name">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{{ route('supplier-bill.index') }}">
+                                <i class="nav-main-link-icon fa fa-file-invoice"></i>
+                                <span class="nav-main-link-name">Supplier Bill</span>
                             </a>
                         </li>
                         <li class="nav-main-item">
@@ -315,6 +322,7 @@
     <script src="{{ asset('admin/js/plugins/datatables-buttons-pdfmake/vfs_fonts.js') }}"></script>
     <script src="{{ asset('admin/js/plugins/datatables-buttons/buttons.print.min.js') }}"></script>
     <script src="{{ asset('admin/js/plugins/datatables-buttons/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('admin/js/plugins/select2/js/select2.full.min.js') }}"></script>
 
     <!-- Page JS Code -->
     <script src="{{ asset('admin/js/pages/be_tables_datatables.min.js') }}"></script>
