@@ -17,6 +17,22 @@ class ProductController extends Controller
         return view('product.index', compact('products', 'totalProduct'));
     }
 
+    // product get method using ajax
+    public function productGet()
+    {
+        try {
+            $product = Product::all();
+            return response([
+                'product' => $product,
+
+            ]);
+        } catch (Exception $exception) {
+            return response([
+                'message' => 'error' . $exception,
+            ]);
+        }
+    }
+
     // product add product page function
     public function productCreate()
     {
