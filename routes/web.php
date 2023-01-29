@@ -79,9 +79,9 @@ Route::get('/customer/profile/{id}', [CustomerController::class, 'customerProfil
 // supplier list route
 Route::get("/supplier/index", [SupplierController::class, 'supplierIndex'])->name('supplier.index');
 //supplier list route
-// Route::get("/supplier/get", [SupplierController::class, 'supplierGet'])->name('supplier.get');
+Route::get("/product/get", [ProductController::class, 'productGet'])->name('supplier.get');
 //supplier post route
-// Route::post("/supplier/post", [SupplierController::class, 'supplierPost'])->name('supplier.post');
+Route::post("/product/post", [ProductController::class, 'productPost'])->name('supplier.post');
 //supplier edit route
 Route::get("/supplier/create", [SupplierController::class, 'supplierCreate'])->name('supplier.create');
 //supplier store route
@@ -102,3 +102,5 @@ Route::get('/supplier/profile/{id}', [SupplierController::class, 'supplierProfil
 Route::get('/supplier-bill/index', [SupplierBillController::class, 'supplierBillIndex'])->name('supplier-bill.index');
 // supplier create page route
 Route::get('/supplier-bill/create', [SupplierBillController::class, 'supplierBillCreate'])->name('supplier-bill.create');
+//admin - supplier post route
+Route::post("/supplier-bill/store", [SupplierBillController::class, 'supplierBillStore'])->name('supplierBill.store');

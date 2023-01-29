@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\Supplier;
+use App\Models\SupplierBill;
+use App\Models\SupplierBillProduct;
+use Exception;
 use Illuminate\Http\Request;
 
 class SupplierBillController extends Controller
@@ -12,8 +17,59 @@ class SupplierBillController extends Controller
         return view('supplier-bill.index');
     }
 
+    // supplier-bill create page route function
     public function supplierBillCreate()
     {
-        return view('supplier-bill.create');
+        $suppliers = Supplier::all();
+        $products = Product::all();
+        return view('supplier-bill.create', compact('products', 'suppliers'));
+    }
+
+    // supplier-bill store function 
+    public function supplierBillStore(Request $request)
+    {
+        try {
+            $request->validate([
+                'invoice_id' => 'required',
+                'invoice_date' => 'required',
+                'supplier_id' => 'required',
+            ]);
+
+            $supplier_bill = new SupplierBill();
+
+            $supplier_bill->supplier_id = $request->supplier_id;
+            $supplier_bill->invoice_id = $request->invoice_id;
+            $supplier_bill->invoice_date = $request->invoice_date;
+            $supplier_bill->gross_total_amount = $request->gross_total_amount;
+            $supplier_bill->discount = $request->discount;
+            $supplier_bill->net_total_amount = $request->net_total_amount;
+            $supplier_bill->remark = $request->remark;
+
+            $supplier_bill->save();
+
+            for ($i = 0; $i < count($request->quantity); $i++) {
+                $supplier_bill_product = new SupplierBillProduct();
+                $supplier_bill_product->supplierBill_id = $supplier_bill->id;
+                $supplier_bill_product->product_id = intval($request->product_id[$i]);
+                $supplier_bill_product->quantity = $request->quantity[$i];
+                $supplier_bill_product->rate = $request->basic_rate[$i];
+                $supplier_bill_product->unit = $request->unit[$i];
+                $supplier_bill_product->amount = $request->amount[$i];
+
+                $supplier_bill_product->save();
+            }
+
+            // for ($i = 0; $i < count($request->product_id); $i++) {
+
+            //     $id = intval($request->product_id[$i]);
+            //     $inventory = Inventory::find($id);
+            //     $inventory->cost_price = $request->basic_rate[$i];
+            //     $inventory->stock += $request->quantity[$i];
+            //     $inventory->update();
+            // }
+            return redirect()->route('supplier-bill.index')->with('success', "Supplier Bill Created Successfully");
+        } catch (Exception $exception) {
+            return redirect()->route('supplier-bill.index')->with('error', $exception);
+        }
     }
 }

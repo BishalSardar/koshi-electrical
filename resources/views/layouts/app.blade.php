@@ -323,6 +323,7 @@
     <script src="{{ asset('admin/js/plugins/datatables-buttons/buttons.print.min.js') }}"></script>
     <script src="{{ asset('admin/js/plugins/datatables-buttons/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('admin/js/plugins/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('admin/js/app.js') }}"></script>
 
     <!-- Page JS Code -->
     <script src="{{ asset('admin/js/pages/be_tables_datatables.min.js') }}"></script>
