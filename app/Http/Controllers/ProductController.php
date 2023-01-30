@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Stock;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -63,6 +64,10 @@ class ProductController extends Controller
             $product->description = $request->description;
 
             $product->save();
+
+            $inventory = new Stock();
+            $inventory->product_id = $product->id;
+            $inventory->save();
 
             return redirect()->route('product.index')->with('success', "Product Added Successfully");
         } catch (Exception $exception) {
