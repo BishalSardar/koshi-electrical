@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Stock;
 use App\Models\Supplier;
 use App\Models\SupplierBill;
 use App\Models\SupplierBillProduct;
@@ -60,14 +61,14 @@ class SupplierBillController extends Controller
                 $supplier_bill_product->save();
             }
 
-            // for ($i = 0; $i < count($request->product_id); $i++) {
+            for ($i = 0; $i < count($request->product_id); $i++) {
 
-            //     $id = intval($request->product_id[$i]);
-            //     $inventory = Inventory::find($id);
-            //     $inventory->cost_price = $request->basic_rate[$i];
-            //     $inventory->stock += $request->quantity[$i];
-            //     $inventory->update();
-            // }
+                $id = intval($request->product_id[$i]);
+                $inventory = Stock::find($id);
+                $inventory->cost_price = $request->basic_rate[$i];
+                $inventory->stock += $request->quantity[$i];
+                $inventory->update();
+            }
             return redirect()->route('supplier-bill.index')->with('success', "Supplier Bill Created Successfully");
         } catch (Exception $exception) {
             return redirect()->route('supplier-bill.index')->with('error', "Error while creating supplier bill");

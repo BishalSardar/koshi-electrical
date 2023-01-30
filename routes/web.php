@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StockController;
 use App\Http\Controllers\SupplierBillController;
 use App\Http\Controllers\SupplierController;
 
@@ -97,8 +98,8 @@ Route::get('/supplier/profile/{id}', [SupplierController::class, 'supplierProfil
 
 
 
-
 // supplier bill
+// supplier bill index page route
 Route::get('/supplier-bill/index', [SupplierBillController::class, 'supplierBillIndex'])->name('supplier-bill.index');
 // supplier create page route
 Route::get('/supplier-bill/create', [SupplierBillController::class, 'supplierBillCreate'])->name('supplier-bill.create');
@@ -108,3 +109,9 @@ Route::post("/supplier-bill/store", [SupplierBillController::class, 'supplierBil
 Route::get('/supplier-bill/profile/{id}', [SupplierBillController::class, 'supplierBillProfile'])->name('supplier-bill.profile');
 // supplier bill delete
 Route::get('/supplier-bill/delete/{id}', [SupplierBillController::class, 'supplierBillDelete'])->name('supplier-bill.delete');
+
+
+
+// stock
+// stock index page route
+Route::get('/stock/index', [StockController::class, 'stockIndex'])->name('stock.index');

@@ -73,9 +73,15 @@
                             </a>
                         </li>
                         <li class="nav-main-item">
-                            <a class="nav-main-link" href="{{ route('supplier-bill.index') }}">
-                                <i class="nav-main-link-icon fa fa-file-invoice"></i>
-                                <span class="nav-main-link-name">Supplier Bill</span>
+                            <a class="nav-main-link" href="{{ route('customer.index') }}">
+                                <i class="nav-main-link-icon fa fa-address-book"></i>
+                                <span class="nav-main-link-name">Customer</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{{ route('stock.index') }}">
+                                <i class="nav-main-link-icon fa fa-box"></i>
+                                <span class="nav-main-link-name">Stock</span>
                             </a>
                         </li>
                         <li class="nav-main-item">
@@ -85,9 +91,9 @@
                             </a>
                         </li>
                         <li class="nav-main-item">
-                            <a class="nav-main-link" href="{{ route('customer.index') }}">
-                                <i class="nav-main-link-icon fa fa-address-book"></i>
-                                <span class="nav-main-link-name">Customer</span>
+                            <a class="nav-main-link" href="{{ route('supplier-bill.index') }}">
+                                <i class="nav-main-link-icon fa fa-file-invoice"></i>
+                                <span class="nav-main-link-name">Supplier Bill</span>
                             </a>
                         </li>
                         <li class="nav-main-item">
