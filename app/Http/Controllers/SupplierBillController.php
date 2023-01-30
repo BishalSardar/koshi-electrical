@@ -14,7 +14,8 @@ class SupplierBillController extends Controller
     // supplier-bill index route page function 
     public function supplierBillIndex()
     {
-        return view('supplier-bill.index');
+        $supplier_bills = SupplierBill::all();
+        return view('supplier-bill.index', compact('supplier_bills'));
     }
 
     // supplier-bill create page route function
@@ -69,7 +70,25 @@ class SupplierBillController extends Controller
             // }
             return redirect()->route('supplier-bill.index')->with('success', "Supplier Bill Created Successfully");
         } catch (Exception $exception) {
-            return redirect()->route('supplier-bill.index')->with('error', $exception);
+            return redirect()->route('supplier-bill.index')->with('error', "Error while creating supplier bill");
         }
+    }
+
+
+    // supplier bill page function
+    public function supplierBillProfile($id)
+    {
+        $supplier_bill = SupplierBill::find($id);
+        // $factory_bill_products = FactoryBillProduct::where('factoryBill_id', $id)->get();
+        $supplier_bill_products = SupplierBillProduct::where('supplierBill_id', $id)->get();
+        return view('supplier-bill.profile', compact('supplier_bill', 'supplier_bill_products'));
+    }
+
+
+    public function supplierBillDelete($id)
+    {
+        $supplier_bill =  SupplierBill::find($id);
+        $supplier_bill->delete();
+        return redirect()->back()->with('success', "Supplier Bill Created Successfully");
     }
 }
