@@ -22,7 +22,7 @@
             <div class="col-6 col-lg-3">
                 <a class="block block-rounded block-link-shadow text-center h-100 mb-0" href="javascript:void(0)">
                     <div class="block-content py-5">
-                        <div class="fs-3 fw-semibold text-dark mb-1">2</div>
+                        <div class="fs-3 fw-semibold text-dark mb-1">{{ count($supplier_bills) }}</div>
                         <p class="fw-semibold fs-sm text-muted text-uppercase mb-0">
                             All Bills
                         </p>
@@ -70,40 +70,44 @@
                     <table class="table table-bordered table-striped table-vcenter table-responsive js-dataTable-full">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Phone</th>
-                                <th>Address</th>
+                                <th>Bill ID</th>
+                                <th>Bill Date</th>
+                                <th>Gross Total Amount</th>
+                                <th>Discount</th>
+                                <th>Net Total Amount</th>
                                 <th style="width: 15%;"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($suppliers as $supplier)
+                            @foreach ($supplier_bills as $supplier_bill)
                                 <tr>
                                     <td class="fw-semibold">
-                                        <strong>{{ $supplier->name }}</strong>
+                                        <strong>{{ $supplier_bill->id }}</strong>
                                     </td>
                                     <td>
-                                        <span>{{ $supplier->phone }}</span>
+                                        <span>{{ $supplier_bill->invoice_date }}</span>
                                     </td>
                                     <td>
-                                        <span>{{ $supplier->address }}</span>
+                                        <span>Rs. {{ $supplier_bill->gross_total_amount }}</span>
+                                    </td>
+                                    <td>
+                                        <span>Rs. {{ $supplier_bill->discount }}</span>
+                                    </td>
+                                    <td>
+                                        <span>Rs. {{ $supplier_bill->net_total_amount }}</span>
                                     </td>
                                     <td class="text-center fs-sm">
                                         <a class="btn btn-sm btn-primary"
-                                            href="{{ route('supplier.profile', $supplier->id) }}">
+                                            href="{{ route('supplier-bill.profile', $supplier_bill->id) }}">
                                             <i class="fa fa-fw fa-eye"></i>
                                         </a>
-                                        <a class="btn btn-sm btn-secondary"
-                                            href="{{ route('supplier.edit', $supplier->id) }}">
-                                            <i class="fa fa-fw fa-pen-to-square"></i>
-                                        </a>
                                         <a class="btn btn-sm btn-danger"
-                                            href="{{ route('supplier.delete', $supplier->id) }}">
+                                            href="{{ route('supplier-bill.delete', $supplier_bill->id) }}">
                                             <i class="fa fa-fw fa-trash-can"></i>
                                         </a>
                                     </td>
                                 </tr>
-                            @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

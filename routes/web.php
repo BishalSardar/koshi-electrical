@@ -102,5 +102,9 @@ Route::get('/supplier/profile/{id}', [SupplierController::class, 'supplierProfil
 Route::get('/supplier-bill/index', [SupplierBillController::class, 'supplierBillIndex'])->name('supplier-bill.index');
 // supplier create page route
 Route::get('/supplier-bill/create', [SupplierBillController::class, 'supplierBillCreate'])->name('supplier-bill.create');
-//admin - supplier post route
+// supplier post route
 Route::post("/supplier-bill/store", [SupplierBillController::class, 'supplierBillStore'])->name('supplierBill.store');
+// supplier bill page route
+Route::get('/supplier-bill/profile/{id}', [SupplierBillController::class, 'supplierBillProfile'])->name('supplier-bill.profile');
+// supplier bill delete
+Route::get('/supplier-bill/delete/{id}', [SupplierBillController::class, 'supplierBillDelete'])->name('supplier-bill.delete');
