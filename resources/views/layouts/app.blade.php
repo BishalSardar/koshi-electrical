@@ -73,6 +73,12 @@
                             </a>
                         </li>
                         <li class="nav-main-item">
+                            <a class="nav-main-link" href="{{ route('contract.index') }}">
+                                <i class="nav-main-link-icon fa fa-address-book"></i>
+                                <span class="nav-main-link-name">Contracts</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
                             <a class="nav-main-link" href="{{ route('customerBill.index') }}">
                                 <i class="nav-main-link-icon fa fa-address-book"></i>
                                 <span class="nav-main-link-name">Customer Bill</span>
