@@ -37,7 +37,7 @@
         <!-- User Info -->
         <div class="block block-rounded">
             <div class="block-content text-center">
-                <div class="py-4">
+                {{-- <div class="py-4">
                     <h1 class="fs-lg mb-2">
                         {{ $customer->name }}
                     </h1>
@@ -49,7 +49,7 @@
                         <i class="fa fa-award text-warning me-1"></i>
                         {{ $customer->address }}
                     </p>
-                </div>
+                </div> --}}
             </div>
             <div class="block-content bg-body-light text-center">
                 <div class="row items-push text-uppercase">
