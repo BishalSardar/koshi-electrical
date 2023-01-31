@@ -119,3 +119,45 @@ $("#discount").change(function () {
     var total = gross_total_amount * 1 - discount * 1;
     document.getElementById("net_total_amount").value = total;
 });
+
+// ----------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------
+
+let inventory_id = "";
+
+// edit stock selling price
+function editSellingPrice(id) {
+    inventory_id = id;
+    $.ajax({
+        url: "/stock/edit/" + id,
+        type: "get",
+        success: function (data) {
+            document.getElementById(
+                "selling-price"
+            ).value = `${data.inventories.selling_price}`;
+        },
+    });
+    $("#modal-default-vcenter").modal("show");
+}
+
+// update btn of selling price modal form
+$("#update-btn").on("click", function (e) {
+    updateSellingPrice();
+});
+
+// update selling price
+function updateSellingPrice() {
+    $.ajax({
+        url: "/stock/update/" + inventory_id,
+        type: "post",
+        data: $("#update-frm").serialize(),
+        success: function (data) {
+            $("#modal-default-vcenter").modal("hide");
+        },
+        error: function (data) {
+            console.log("hello world");
+        },
+    });
+}

@@ -115,3 +115,7 @@ Route::get('/supplier-bill/delete/{id}', [SupplierBillController::class, 'suppli
 // stock
 // stock index page route
 Route::get('/stock/index', [StockController::class, 'stockIndex'])->name('stock.index');
+// admin - stock selling price edit route
+Route::get('/stock/edit/{id}', [StockController::class, 'stockEdit'])->name('stock.edit');
+// admin - stock selling price update route
+Route::post('/stock/update/{id}', [StockController::class, 'stockUpdate'])->name('stock.update');

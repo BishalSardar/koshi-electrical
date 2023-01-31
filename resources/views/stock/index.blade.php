@@ -131,6 +131,11 @@
                                     </td>
                                     <td>
                                         <span>Rs. {{ $stock->selling_price }}</span>
+                                        <button type="button" class="btn btn-sm btn-outline-success" data-bs-toggle="modal"
+                                            data-bs-target="#modal-block-vcenter" id="update-selling-price-btn"
+                                            onclick="editSellingPrice({{ $stock->id }})" style="float: right;">
+                                            <i class="fa fa-fw fa-pencil-alt"></i>
+                                        </button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -140,4 +145,33 @@
             </div>
         </div>
         <!-- END Dynamic Table Full -->
+
+        <!-- Vertically Centered Default Modal -->
+        <div class="modal" id="modal-default-vcenter" tabindex="-1" role="dialog" aria-labelledby="modal-default-vcenter"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Selling Value Update</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-validate is-alter" id="update-frm">
+                            {{ csrf_field() }}
+                            <div class="form-group mb-4">
+                                <label class="form-label" for="full-name">Selling Value</label>
+                                <div class="form-control-wrap">
+                                    <input type="text" class="form-control" id="selling-price" name="selling_price"
+                                        required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-lg btn-primary" id="update-btn">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END Vertically Centered Default Modal -->
     @endsection
