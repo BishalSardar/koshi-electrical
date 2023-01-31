@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('phone');
             $table->string('address');
+            $table->string('cr_or_dr')->nullable();
+            $table->string('balance_amount')->default(0);
+            $table->boolean('status')->default(0)->comment('1=active 0=inactive');
             $table->timestamps();
         });
     }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminProfileController;
+use App\Http\Controllers\CustomerBillController;
 use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +12,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\SupplierBillController;
 use App\Http\Controllers\SupplierController;
+use App\Models\Customer;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +75,18 @@ Route::post("/customer/update/{id}", [CustomerController::class, 'customerUpdate
 Route::get("/customer/delete/{id}", [CustomerController::class, 'customerDelete'])->name('customer.delete');
 // customer profile page route
 Route::get('/customer/profile/{id}', [CustomerController::class, 'customerProfile'])->name('customer.profile');
+
+
+
+// customer bill
+// customer bill page route
+Route::get('/customer-bill/index', [CustomerBillController::class, 'customerBillIndex'])->name('customerBill.index');
+// customer bill create page route
+Route::get('/customer-bill/create', [CustomerBillController::class, 'customerBillCreate'])->name('customerBill.create');
+// customer bill store post route
+Route::post("/customer-bill/store", [CustomerBillController::class, 'customerBillStore'])->name('customerBill.store');
+
+
 
 
 
