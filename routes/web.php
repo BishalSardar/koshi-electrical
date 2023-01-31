@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminProfileController;
+use App\Http\Controllers\ContractController;
 use App\Http\Controllers\CustomerBillController;
 use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
@@ -75,6 +76,8 @@ Route::post("/customer/update/{id}", [CustomerController::class, 'customerUpdate
 Route::get("/customer/delete/{id}", [CustomerController::class, 'customerDelete'])->name('customer.delete');
 // customer profile page route
 Route::get('/customer/profile/{id}', [CustomerController::class, 'customerProfile'])->name('customer.profile');
+// customer change status
+Route::get('/customer/status/{id}', [CustomerController::class, 'customerStatus'])->name('customer.change.status');
 
 
 
@@ -133,3 +136,21 @@ Route::get('/stock/index', [StockController::class, 'stockIndex'])->name('stock.
 Route::get('/stock/edit/{id}', [StockController::class, 'stockEdit'])->name('stock.edit');
 // admin - stock selling price update route
 Route::post('/stock/update/{id}', [StockController::class, 'stockUpdate'])->name('stock.update');
+
+
+
+// contracts
+// contracts index page route 
+Route::get('/contract/index', [ContractController::class, 'contractIndex'])->name('contract.index');
+// contracts create page route
+Route::get('/contract/create', [ContractController::class, 'contractCreate'])->name('contract.create');
+// contracts store route
+Route::post("/contract/store", [ContractController::class, 'contractStore'])->name('contract.store');
+// contract edit page route
+Route::get('/contract/edit/{id}', [ContractController::class, 'contractEdit'])->name('contract.edit');
+// contract update route
+Route::post("/contract/update/{id}", [ContractController::class, 'contractUpdate'])->name('contract.update');
+// contract delete route
+Route::get("/contract/delete/{id}", [ContractController::class, 'contractDelete'])->name('contract.delete');
+// contract change status
+Route::get('/contract/status/{id}', [ContractController::class, 'contractStatus'])->name('contract.change.status');

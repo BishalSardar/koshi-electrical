@@ -88,4 +88,13 @@ class CustomerController extends Controller
         $customer = Customer::find($id);
         return view('customer.profile', compact('customer'));
     }
+
+    // customer change Status
+    public function customerStatus($id)
+    {
+        $customer = Customer::find($id);
+        $customer->status = !$customer->status;
+        $customer->update();
+        return redirect()->back()->with('success', "Customer Status Changed Successfully");
+    }
 }

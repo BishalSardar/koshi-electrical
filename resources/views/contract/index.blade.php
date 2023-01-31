@@ -7,13 +7,13 @@
         <!-- Quick Overview -->
         <div class="row items-push">
             <div class="col-6 col-lg-3">
-                <a class="block block-rounded block-link-shadow text-center h-100 mb-0" href="{{ route('customer.create') }}">
+                <a class="block block-rounded block-link-shadow text-center h-100 mb-0" href="{{ route('contract.create') }}">
                     <div class="block-content py-5">
                         <div class="fs-3 fw-semibold text-success mb-1">
                             <i class="fa fa-plus"></i>
                         </div>
                         <p class="fw-semibold fs-sm text-success text-uppercase mb-0">
-                            Add Customer
+                            Add Contract
                         </p>
                     </div>
                 </a>
@@ -21,9 +21,9 @@
             <div class="col-6 col-lg-3">
                 <a class="block block-rounded block-link-shadow text-center h-100 mb-0" href="javascript:void(0)">
                     <div class="block-content py-5">
-                        <div class="fs-3 fw-semibold text-dark mb-1">{{ $totalCustomer }}</div>
+                        <div class="fs-3 fw-semibold text-dark mb-1">2</div>
                         <p class="fw-semibold fs-sm text-muted text-uppercase mb-0">
-                            All Customer
+                            All Contracts
                         </p>
                     </div>
                 </a>
@@ -35,7 +35,7 @@
         <div class="block block-rounded">
             <div class="block-header block-header-default">
                 <h3 class="block-title">
-                    Customers
+                    Contracts
                 </h3>
                 <div class="dropdown">
                     <button type="button" class="btn btn-alt-secondary" id="dropdown-ecom-filters"
@@ -70,58 +70,47 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Phone</th>
-                                <th>Address</th>
-                                <th><span>Status</span></th>
-                                <th><span>Balance Amount</span></th>
+                                <th>Starting Date</th>
+                                <th>Ending Date</th>
+                                <th>Status</th>
                                 <th style="width: 15%;"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($customers as $customer)
+                            @foreach ($contracts as $contract)
                                 <tr>
                                     <td class="fw-semibold">
-                                        <strong>{{ $customer->name }}</strong>
+                                        <strong>{{ $contract->customer['name'] }}</strong>
                                     </td>
                                     <td>
-                                        <span>{{ $customer->phone }}</span>
+                                        <span>{{ $contract->starting_date }}</span>
                                     </td>
                                     <td>
-                                        <span>{{ $customer->address }}</span>
+                                        <span>{{ $contract->ending_date }}</span>
                                     </td>
                                     <td>
-                                        @if ($customer->status == 0)
+                                        @if ($contract->status == 0)
                                             <span class="badge bg-danger">Inactive</span>
                                         @else
                                             <span class="badge bg-success">Active</span>
                                         @endif
                                         <button type="button" class="btn btn-sm btn-outline-success" style="float: right;">
-                                            <a href="{{ route('customer.change.status', $customer->id) }}">
+                                            <a href="{{ route('contract.change.status', $contract->id) }}">
                                                 <i class="fa fa-repeat"></i>
                                             </a>
                                         </button>
                                     </td>
-                                    <td>
-                                        <span>Rs. {{ $customer->balance_amount }}
-                                            @if ($customer->cr_or_dr = 'dr')
-                                                <small>Dr</small>
-                                            @else
-                                                <small>Cr</small>
-                                            @endif
-                                        </span>
-                                    </td>
                                     <td class="text-center fs-sm">
 
-                                        <a class="btn btn-sm btn-primary"
-                                            href="{{ route('customer.profile', $customer->id) }}">
+                                        <a class="btn btn-sm btn-primary" href="">
                                             <i class="fa fa-fw fa-eye"></i>
                                         </a>
                                         <a class="btn btn-sm btn-secondary"
-                                            href="{{ route('customer.edit', $customer->id) }}">
+                                            href="{{ route('contract.edit', $contract->id) }}">
                                             <i class="fa fa-fw fa-pen-to-square"></i>
                                         </a>
                                         <a class="btn btn-sm btn-danger"
-                                            href="{{ route('customer.delete', $customer->id) }}">
+                                            href="{{ route('contract.delete', $contract->id) }}">
                                             <i class="fa fa-fw fa-trash-can"></i>
                                         </a>
                                     </td>
