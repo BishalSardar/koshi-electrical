@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contract;
 use App\Models\Customer;
 use App\Models\CustomerBill;
 use App\Models\CustomerBillProducts;
@@ -22,7 +23,7 @@ class CustomerBillController extends Controller
     // customer bill page function
     public function customerBillCreate()
     {
-        $customers = Customer::all();
+        $customers = Customer::where('status', 1)->get();
         $products = Product::all();
         return view('customer-bill.create', compact('customers', 'products'));
     }
@@ -53,11 +54,11 @@ class CustomerBillController extends Controller
             }
 
 
-            // $period = Period::where('user_id', $request->seller_id)->first();
+            $contract = Contract::where('customer_id', $request->customer_id)->first();
 
-            // if ($period != null && $period->status == 0) {
-            //     $seller_bill->period_id = $period->id;
-            // }
+            if ($contract != null && $contract->status != 0) {
+                $customer_bill->contract_id = $contract->id;
+            }
 
             $customer_bill->save();
 

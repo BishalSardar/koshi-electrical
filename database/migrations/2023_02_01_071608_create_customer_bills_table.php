@@ -24,8 +24,8 @@ return new class extends Migration
             $table->boolean('status')->comment('0=unpaid 1=paid')->default(0);
             $table->unsignedBigInteger('customer_id')->nullable();
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
-            // $table->unsignedBigInteger('period_id')->nullable();
-            // $table->foreign('period_id')->references('id')->on('periods')->onDelete('cascade');
+            $table->unsignedBigInteger('contract_id')->nullable();
+            $table->foreign('contract_id')->references('id')->on('contracts')->onDelete('cascade');
             $table->timestamps();
         });
     }
