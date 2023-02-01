@@ -17,8 +17,8 @@ class CustomerBill extends Model
         return $this->belongsTo('App\Models\Customer');
     }
 
-    // public function period()
-    // {
-    //     return $this->belongsTo('App\Models\Period');
-    // }
+    public function contract()
+    {
+        return $this->belongsTo('App\Models\Contract');
+    }
 }
