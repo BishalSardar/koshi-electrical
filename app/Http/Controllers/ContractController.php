@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Contract;
 use App\Models\Customer;
+use App\Models\CustomerBill;
+use App\Models\CustomerBillProducts;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -79,5 +81,40 @@ class ContractController extends Controller
         $contract->status = !$contract->status;
         $contract->update();
         return redirect()->back()->with('success', 'Contract Status Changed Successfully');
+    }
+
+
+    // contract profile 
+    public function contractProfile($id)
+    {
+        $contract = Contract::find($id);
+        $customer = Customer::find($contract->customer_id);
+        $contract_bills = CustomerBill::where('contract_id', $id)->get();
+
+        $contract_bills_unpaid = CustomerBill::where('contract_id', $id)->where('status', 0)->get();
+
+        $total_amount = 0;
+
+        foreach ($contract_bills_unpaid as $bill) {
+            $total_amount = $total_amount + $bill->net_total_amount;
+        }
+
+        $unpaid_contract_bills = CustomerBill::where('contract_id', $id)->where('status', 0)->get();
+        $paid_contract_bills = CustomerBill::where('contract_id', $id)->where('status', 1)->get();
+
+        $new_bill = [];
+        for ($i = 0; $i < count($contract_bills); $i++) {
+            array_push($new_bill, $contract_bills[$i]->id);
+        }
+
+        $new_bill_details = [];
+        for ($i = 0; $i < count($contract_bills); $i++) {
+            array_push($new_bill_details, CustomerBillProducts::where('customerBill_id', $new_bill[$i])->get());
+        }
+
+        $new_bill_details_filtered = array_filter($new_bill_details, fn ($value) => !is_null($value));
+
+
+        return view('contract.profile', compact('customer', 'contract', 'contract_bills', 'unpaid_contract_bills', 'total_amount', 'paid_contract_bills', 'new_bill_details_filtered'));
     }
 }
