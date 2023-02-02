@@ -74,7 +74,7 @@
                         </li>
                         <li class="nav-main-item">
                             <a class="nav-main-link" href="{{ route('contract.index') }}">
-                                <i class="nav-main-link-icon fa fa-address-book"></i>
+                                <i class="nav-main-link-icon fa fa-file-contract"></i>
                                 <span class="nav-main-link-name">Contracts</span>
                             </a>
                         </li>
@@ -86,19 +86,19 @@
                         </li>
                         <li class="nav-main-item">
                             <a class="nav-main-link" href="{{ route('customer.index') }}">
-                                <i class="nav-main-link-icon fa fa-address-book"></i>
+                                <i class="nav-main-link-icon fa fa-user"></i>
                                 <span class="nav-main-link-name">Customer</span>
                             </a>
                         </li>
                         <li class="nav-main-item">
                             <a class="nav-main-link" href="{{ route('stock.index') }}">
-                                <i class="nav-main-link-icon fa fa-box"></i>
+                                <i class="nav-main-link-icon fa fa-cubes"></i>
                                 <span class="nav-main-link-name">Stock</span>
                             </a>
                         </li>
                         <li class="nav-main-item">
                             <a class="nav-main-link" href="{{ route('product.index') }}">
-                                <i class="nav-main-link-icon fa fa-box"></i>
+                                <i class="nav-main-link-icon fa fa-cube"></i>
                                 <span class="nav-main-link-name">Product</span>
                             </a>
                         </li>

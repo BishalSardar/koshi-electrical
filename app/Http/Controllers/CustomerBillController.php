@@ -16,7 +16,9 @@ class CustomerBillController extends Controller
     // customer bill index page function 
     public function customerBillIndex()
     {
-        return view('customer-bill.index');
+        $customer_bills = CustomerBill::all();
+        $no_of_bills = count($customer_bills);
+        return view('customer-bill.index', compact('customer_bills', 'no_of_bills'));
     }
 
 
@@ -85,7 +87,7 @@ class CustomerBillController extends Controller
 
 
             $customer = Customer::where('id', $request->customer_id)->first();
-            if ($request->invoice_type == 'dr') {
+            if ($request->cr_or_dr == 'dr') {
                 $customer->balance_amount += $request->net_total_amount;
             } else {
                 $customer->balance_amount -= $request->net_total_amount;
@@ -102,5 +104,33 @@ class CustomerBillController extends Controller
         } catch (Exception $exception) {
             return redirect()->route('customerBill.index')->with('error', $exception);
         }
+    }
+
+
+    // customer bill delete
+    public function customerBillDelete($id)
+    {
+        $customer_bill = CustomerBill::find($id);
+        $customer_bill->delete();
+        return redirect()->route('customerBill.index')->with('success', "Customer Bill Deleted Successfully");
+    }
+
+
+    // customer bill profile page
+    public function customerBillProfile($id)
+    {
+        $customer_bill = CustomerBill::find($id);
+        $customer_bill_products = CustomerBillProducts::where('customerBill_id', $id)->get();
+        return view('customer-bill.profile', compact('customer_bill', 'customer_bill_products'));
+    }
+
+
+    // customer bill status change
+    public function customerBillChangeStatus($id)
+    {
+        $customer_bill = CustomerBill::find($id);
+        $customer_bill->status = !$customer_bill->status;
+        $customer_bill->update();
+        return redirect()->back()->with('success', 'Customer BIll Status Changed Successfully');
     }
 }

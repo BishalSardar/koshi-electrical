@@ -22,7 +22,7 @@
             <div class="col-6 col-lg-3">
                 <a class="block block-rounded block-link-shadow text-center h-100 mb-0" href="javascript:void(0)">
                     <div class="block-content py-5">
-                        <div class="fs-3 fw-semibold text-dark mb-1">4</div>
+                        <div class="fs-3 fw-semibold text-dark mb-1">{{ $no_of_bills }}</div>
                         <p class="fw-semibold fs-sm text-muted text-uppercase mb-0">
                             All Bills
                         </p>
@@ -72,42 +72,48 @@
                             <tr>
                                 <th>Bill ID</th>
                                 <th>Bill Date</th>
-                                <th>Gross Total Amount</th>
-                                <th>Discount</th>
+                                <th>Status</th>
                                 <th>Net Total Amount</th>
                                 <th style="width: 15%;"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($supplier_bills as $supplier_bill)
+                            @foreach ($customer_bills as $customer_bill)
                                 <tr>
                                     <td class="fw-semibold">
-                                        <strong>{{ $supplier_bill->id }}</strong>
+                                        <strong>{{ $customer_bill->id }}</strong>
                                     </td>
                                     <td>
-                                        <span>{{ $supplier_bill->invoice_date }}</span>
+                                        <span>{{ $customer_bill->invoice_date }}</span>
                                     </td>
                                     <td>
-                                        <span>Rs. {{ $supplier_bill->gross_total_amount }}</span>
+                                        @if ($customer_bill->status == 0)
+                                            <span class="badge bg-danger">Unpaid</span>
+                                        @else
+                                            <span class="badge bg-success">Paid</span>
+                                        @endif
+                                        <a href="{{ route('customerBill.change.status', $customer_bill->id) }}">
+                                            <button type="button" class="btn btn-sm btn-outline-success"
+                                                style="float: right;">
+                                                <i class="fa fa-repeat"></i>
+                                            </button>
+                                        </a>
                                     </td>
                                     <td>
-                                        <span>Rs. {{ $supplier_bill->discount }}</span>
-                                    </td>
-                                    <td>
-                                        <span>Rs. {{ $supplier_bill->net_total_amount }}</span>
+                                        <span>Rs. {{ $customer_bill->net_total_amount }}</span>
                                     </td>
                                     <td class="text-center fs-sm">
                                         <a class="btn btn-sm btn-primary"
-                                            href="{{ route('supplier-bill.profile', $supplier_bill->id) }}">
+                                            href="{{ route('customerBill.profile', $customer_bill->id) }}">
                                             <i class="fa fa-fw fa-eye"></i>
                                         </a>
                                         <a class="btn btn-sm btn-danger"
-                                            href="{{ route('supplier-bill.delete', $supplier_bill->id) }}">
+                                            href="{{ route('customerBill.delete', $customer_bill->id) }}">
                                             <i class="fa fa-fw fa-trash-can"></i>
                                         </a>
                                     </td>
                                 </tr>
-                            @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

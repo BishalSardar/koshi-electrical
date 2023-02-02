@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\CustomerBill;
+use App\Models\CustomerBillProducts;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -86,7 +88,19 @@ class CustomerController extends Controller
     public function customerProfile($id)
     {
         $customer = Customer::find($id);
-        return view('customer.profile', compact('customer'));
+        $customer_bills = CustomerBill::where('customer_id', $id)->get();
+
+        $new_bill = [];
+        for ($i = 0; $i < count($customer_bills); $i++) {
+            array_push($new_bill, $customer_bills[$i]->id);
+        }
+
+        $new_bill_details = [];
+        for ($i = 0; $i < count($customer_bills); $i++) {
+            array_push($new_bill_details, CustomerBillProducts::where('customerBill_id', $new_bill[$i])->get());
+        }
+
+        return view('customer.profile', compact('customer', 'customer_bills', 'new_bill_details'));
     }
 
     // customer change Status

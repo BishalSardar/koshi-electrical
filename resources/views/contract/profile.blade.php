@@ -3,84 +3,64 @@
 @section('content')
     <!-- Page Content -->
     <div class="content">
-        <!-- Quick Actions -->
+        <!-- Quick Overview -->
         <div class="row items-push">
-            <div class="col-6">
-                <a class="block block-rounded block-link-shadow text-center h-100 mb-0"
-                    href="{{ route('customer.edit', $customer->id) }}">
+            <div class="col-6 col-lg-3">
+                <a class="block block-rounded block-link-shadow text-center h-100 mb-0" href="javascript:void(0)">
                     <div class="block-content py-5">
-                        <div class="fs-3 fw-semibold mb-1">
-                            <i class="fa fa-pencil-alt"></i>
+                        <div class="fs-3 fw-semibold text-dark mb-1">
+                            {{ count($contract_bills) }}
                         </div>
                         <p class="fw-semibold fs-sm text-muted text-uppercase mb-0">
-                            Edit Customer
+                            Total Bills
                         </p>
                     </div>
                 </a>
             </div>
-            <div class="col-6">
-                <a class="block block-rounded block-link-shadow text-center h-100 mb-0"
-                    href="{{ route('customer.delete', $customer->id) }}">
+            <div class="col-6 col-lg-3">
+                <a class="block block-rounded block-link-danger text-center h-100 mb-0" href="javascript:void(0)">
                     <div class="block-content py-5">
-                        <div class="fs-3 fw-semibold text-danger mb-1">
-                            <i class="fa fa-times"></i>
-                        </div>
+                        <div class="fs-3 fw-semibold text-danger mb-1">{{ count($unpaid_contract_bills) }}</div>
                         <p class="fw-semibold fs-sm text-danger text-uppercase mb-0">
-                            Remove Customer
+                            Unpaid Bills
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-6 col-lg-3">
+                <a class="block block-rounded block-link-shadow text-center h-100 mb-0" href="javascript:void(0)">
+                    <div class="block-content py-5">
+                        <div class="fs-3 fw-semibold text-success mb-1">{{ count($paid_contract_bills) }}</div>
+                        <p class="fw-semibold fs-sm text-success text-uppercase mb-0">
+                            Paid Bills
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-6 col-lg-3">
+                <a class="block block-rounded block-link-shadow text-center h-100 mb-0" href="javascript:void(0)">
+                    <div class="block-content py-5">
+                        <div class="fs-3 fw-semibold text-success mb-1">Rs. {{ $total_amount }} CR
+                        </div>
+                        <p class="fw-semibold fs-sm text-success text-uppercase mb-0">
+                            Total Amount
                         </p>
                     </div>
                 </a>
             </div>
         </div>
-        <!-- END Quick Actions -->
-
-        <!-- User Info -->
-        <div class="block block-rounded">
-            <div class="block-content text-center">
-                {{-- <div class="py-4">
-                    <h1 class="fs-lg mb-2">
-                        {{ $customer->name }}
-                    </h1>
-                    <p class="text-muted mb-0">
-                        <i class="fa fa-award text-warning me-1"></i>
-                        {{ $customer->phone }}
-                    </p>
-                    <p class="text-muted">
-                        <i class="fa fa-award text-warning me-1"></i>
-                        {{ $customer->address }}
-                    </p>
-                </div> --}}
-            </div>
-            <div class="block-content bg-body-light text-center">
-                <div class="row items-push text-uppercase">
-                    <div class="col-6 col-md-3">
-                        <div class="fw-semibold text-dark mb-1">Bills</div>
-                        <a class="link-fx fs-3" href="javascript:void(0)">5</a>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <div class="fw-semibold text-dark mb-1">Cr/Dr</div>
-                        @if ($customer->cr_or_dr == 'dr')
-                            <div class="fs-3 text-success mb-1">Debit</div>
-                        @else
-                            <div class="fs-3 text-danger mb-1">Credit</div>
-                        @endif
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <div class="fw-semibold text-dark mb-1">Debit</div>
-                        <a class="link-fx fs-3" href="javascript:void(0)">Rs. {{ $customer->balance_amount }}</a>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <div class="fw-semibold text-dark mb-1">Date</div>
-                        <a class="link-fx fs-3" href="javascript:void(0)">{{ $customer->created_at->format('Y-m-d') }}</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END User Info -->
+        <!-- END Quick Overview -->
 
         <div class="block block-rounded">
             <div class="block-header block-header-default">
-                <h3 class="block-title">Account</h3>
+                <h3 class="block-title">{{ $contract->customer['name'] }}</h3>
+                <div class="block-options">
+                    <a href="{{ route('customerBill.create') }}">
+                        <button type="button" class="btn btn-alt-success me-1 mb-3">
+                            <i class="fa fa-fw fa-plus opacity-50 me-1"></i> Add Bill
+                        </button>
+                    </a>
+                </div>
             </div>
             <div class="block-content">
                 <table class="table table-vcenter">
@@ -96,7 +76,7 @@
                     </thead>
                     <tbody>
 
-                        @foreach ($customer_bills as $bill)
+                        @foreach ($contract_bills as $bill)
                             <tr>
                                 <td class="fw-semibold">
                                     <span> <a href="{{ route('customerBill.profile', $bill->id) }}">{{ $bill->id }}</a>
@@ -104,7 +84,7 @@
                                 </td>
                                 <td>
                                     <span class="tb-lead">
-                                        @foreach ($new_bill_details as $new_bill_detail)
+                                        @foreach ($new_bill_details_filtered as $new_bill_detail)
                                             @php
                                                 $bill_details = collect($new_bill_detail)->where('customerBill_id', $bill->id);
                                             @endphp
@@ -144,8 +124,7 @@
                 </table>
             </div>
         </div>
-
+        <!-- END Table -->
 
     </div>
-    <!-- END Page Content -->
 @endsection

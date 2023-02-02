@@ -88,6 +88,14 @@ Route::get('/customer-bill/index', [CustomerBillController::class, 'customerBill
 Route::get('/customer-bill/create', [CustomerBillController::class, 'customerBillCreate'])->name('customerBill.create');
 // customer bill store post route
 Route::post("/customer-bill/store", [CustomerBillController::class, 'customerBillStore'])->name('customerBill.store');
+// customer bill delete
+Route::get("/customer-bill/delete/{id}", [CustomerBillController::class, 'customerBillDelete'])->name('customerBill.delete');
+// customer bill page route
+Route::get('/customer-bill/profile/{id}', [CustomerBillController::class, 'customerBillProfile'])->name('customerBill.profile');
+// customer bill status change
+Route::get('/customer-bill/change/status/{id}', [CustomerBillController::class, 'customerBillChangeStatus'])->name('customerBill.change.status');
+
+
 
 
 
@@ -154,3 +162,5 @@ Route::post("/contract/update/{id}", [ContractController::class, 'contractUpdate
 Route::get("/contract/delete/{id}", [ContractController::class, 'contractDelete'])->name('contract.delete');
 // contract change status
 Route::get('/contract/status/{id}', [ContractController::class, 'contractStatus'])->name('contract.change.status');
+// contract profile
+Route::get('/contract/profile/{id}', [ContractController::class, 'contractProfile'])->name('contract.profile');
