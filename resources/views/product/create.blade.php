@@ -22,6 +22,15 @@
                                 <input type="text" class="form-control" id="dm-ecom-product-name" name="name">
                             </div>
                             <div class="mb-4">
+                                <label class="form-label" for="example-select">Category</label>
+                                <select class="form-select" id="example-select" name="category_id">
+                                    <option selected disabled>Select Category</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-4">
                                 <label class="form-label" for="dm-ecom-product-description-short">Product
                                     Description</label>
                                 <textarea class="form-control" id="dm-ecom-product-description-short" name="description" rows="4"></textarea>

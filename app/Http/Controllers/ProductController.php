@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\Stock;
 use Exception;
@@ -37,7 +38,8 @@ class ProductController extends Controller
     // product add product page function
     public function productCreate()
     {
-        return view('product.create');
+        $categories = Category::all();
+        return view('product.create', compact('categories'));
     }
 
     // product store function
@@ -61,6 +63,7 @@ class ProductController extends Controller
                 $product->image = $filename;
             }
             $product->name = $request->name;
+            $product->category_id = $request->category_id;
             $product->description = $request->description;
 
             $product->save();
@@ -79,7 +82,8 @@ class ProductController extends Controller
     public function productEdit($id)
     {
         $product = Product::find($id);
-        return view('product.edit', compact('product'));
+        $categories = Category::all();
+        return view('product.edit', compact('product', 'categories'));
     }
 
     // product update function
@@ -103,6 +107,7 @@ class ProductController extends Controller
                 $product->image = $filename;
             }
             $product->name = $request->name;
+            $product->category_id = $request->category_id;
             $product->description = $request->description;
             $product->update();
             return redirect()->route('product.index')->with('success', "Product Updated Successfully");
