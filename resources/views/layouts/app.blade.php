@@ -102,6 +102,13 @@
                             </a>
                         </li>
                         <li class="nav-main-item">
+                            <a class="nav-main-link  {{ request()->segment(1) == 'category' ? 'active' : '' }}"
+                                href="{{ route('category.index') }}">
+                                <i class="nav-main-link-icon fa fa-cube"></i>
+                                <span class="nav-main-link-name">Category</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
                             <a class="nav-main-link  {{ request()->segment(1) == 'product' ? 'active' : '' }}"
                                 href="{{ route('product.index') }}">
                                 <i class="nav-main-link-icon fa fa-cube"></i>

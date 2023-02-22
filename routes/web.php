@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminProfileController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContractController;
 use App\Http\Controllers\CustomerBillController;
 use App\Http\Controllers\CustomerController;
@@ -44,6 +45,25 @@ Route::post("/admin/profile/update", [AdminProfileController::class, 'adminProfi
 Route::get("/admin/password/edit", [AdminProfileController::class, 'adminPasswordEdit'])->name('admin.password.edit');
 // admin password update route
 Route::post("/admin/password/update", [AdminProfileController::class, 'adminPasswordUpdate'])->name('admin.password.update');
+
+
+// category
+// category list route
+Route::get('/category/index', [CategoryController::class, 'categoryIndex'])->name('category.index');
+// category create route
+Route::get('/category/create', [CategoryController::class, 'categoryCreate'])->name('category.create');
+// category store route
+Route::post("/category/store", [CategoryController::class, 'categoryStore'])->name('category.store');
+//category edit route
+Route::get("/category/edit/{id}", [CategoryController::class, 'categoryEdit'])->name('category.edit');
+// category update route
+Route::post("/category/update/{id}", [CategoryController::class, 'categoryUpdate'])->name('category.update');
+// category delete route
+Route::get("/category/delete/{id}", [CategoryController::class, 'categoryDelete'])->name('category.delete');
+
+
+
+
 
 
 // product
