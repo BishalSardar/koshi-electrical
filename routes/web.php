@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RegularBillController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\SupplierBillController;
 use App\Http\Controllers\SupplierController;
@@ -45,6 +46,19 @@ Route::post("/admin/profile/update", [AdminProfileController::class, 'adminProfi
 Route::get("/admin/password/edit", [AdminProfileController::class, 'adminPasswordEdit'])->name('admin.password.edit');
 // admin password update route
 Route::post("/admin/password/update", [AdminProfileController::class, 'adminPasswordUpdate'])->name('admin.password.update');
+
+
+
+// regular bill
+// regular bill index page
+Route::get('/regular-bill/index', [RegularBillController::class, 'regularBillIndex'])->name('regularBill.index');
+// regular bill create page
+Route::get('/regular-bill/create', [RegularBillController::class, 'regularBillCreate'])->name('regularBill.create');
+// regular bill store post route
+Route::post("/regular-bill/store", [RegularBillController::class, 'regularBillStore'])->name('regularBill.store');
+// regular bill page route
+Route::get('/regular-bill/profile/{id}', [RegularBillController::class, 'regularBillProfile'])->name('regularBill.profile');
+
 
 
 // category
