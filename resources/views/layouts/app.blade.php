@@ -74,6 +74,13 @@
                             </a>
                         </li>
                         <li class="nav-main-item">
+                            <a class="nav-main-link {{ request()->segment(1) == 'regular-bill' ? 'active' : '' }}"
+                                href="{{ route('regularBill.index') }}">
+                                <i class="nav-main-link-icon fa fa-file-invoice"></i>
+                                <span class="nav-main-link-name">Regular Bill</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
                             <a class="nav-main-link  {{ request()->segment(1) == 'contract' ? 'active' : '' }}"
                                 href="{{ route('contract.index') }}">
                                 <i class="nav-main-link-icon fa fa-file-contract"></i>
@@ -99,6 +106,13 @@
                                 href="{{ route('stock.index') }}">
                                 <i class="nav-main-link-icon fa fa-cubes"></i>
                                 <span class="nav-main-link-name">Stock</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link  {{ request()->segment(1) == 'category' ? 'active' : '' }}"
+                                href="{{ route('category.index') }}">
+                                <i class="nav-main-link-icon fa fa-cube"></i>
+                                <span class="nav-main-link-name">Category</span>
                             </a>
                         </li>
                         <li class="nav-main-item">
@@ -329,10 +343,9 @@
     
       Core libraries and functionality
       webpack is putting everything together at assets/_js/main/app.js
-    -->
-    <script src="{{ asset('admin/js/dashmix.app.min.js') }}"></script>
-
-
+    --
+    
+    
     <!-- jQuery (required for DataTables plugin) -->
     <script src="{{ asset('admin/js/lib/jquery.min.js') }}"></script>
 
@@ -345,14 +358,15 @@
     <script src="{{ asset('admin/js/plugins/datatables-buttons-bs5/js/buttons.bootstrap5.min.js') }}"></script>
     <script src="{{ asset('admin/js/plugins/datatables-buttons-jszip/jszip.min.js') }}"></script>
     <script src="{{ asset('admin/js/plugins/datatables-buttons-pdfmake/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('admin/js/plugins/datatables-buttons-pdfmake/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('admin/js/plugins/datatables-buttons/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('admin/js/plugins/datatables-buttons/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('admin/js/plugins/select2/js/select2.full.min.js') }}"></script>
-    <script src="{{ asset('admin/js/app.js') }}"></script>
+    <script src="{{ asset('admin/js/dashmix.app.min.js') }}"></script>
+    <script src="{{ asset('admin/js/lib/jquery.min.js') }}"></script>
+    <script src="{{ asset('admin/js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('admin/js/plugins/datatables-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('admin/js/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
 
     <!-- Page JS Code -->
-    <script src="{{ asset('admin/js/pages/be_tables_datatables.min.js') }}"></script>
+    <script src="{{ asset('admin/js/plugins/datatables-responsive-bs5/js/responsive.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('admin/js/app.js') }}"></script>
 </body>
 
 </html>

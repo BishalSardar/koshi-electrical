@@ -7,13 +7,14 @@
         <!-- Quick Overview -->
         <div class="row items-push">
             <div class="col-6 col-lg-3">
-                <a class="block block-rounded block-link-shadow text-center h-100 mb-0" href="{{ route('product.create') }}">
+                <a class="block block-rounded block-link-shadow text-center h-100 mb-0"
+                    href="{{ route('regularBill.create') }}">
                     <div class="block-content py-5">
                         <div class="fs-3 fw-semibold text-success mb-1">
                             <i class="fa fa-plus"></i>
                         </div>
                         <p class="fw-semibold fs-sm text-success text-uppercase mb-0">
-                            Add Product
+                            Add Bill
                         </p>
                     </div>
                 </a>
@@ -21,9 +22,9 @@
             <div class="col-6 col-lg-3">
                 <a class="block block-rounded block-link-shadow text-center h-100 mb-0" href="javascript:void(0)">
                     <div class="block-content py-5">
-                        <div class="fs-3 fw-semibold text-dark mb-1">{{ $totalProduct }}</div>
+                        <div class="fs-3 fw-semibold text-dark mb-1">1</div>
                         <p class="fw-semibold fs-sm text-muted text-uppercase mb-0">
-                            All Products
+                            All Bills
                         </p>
                     </div>
                 </a>
@@ -35,7 +36,7 @@
         <div class="block block-rounded">
             <div class="block-header block-header-default">
                 <h3 class="block-title">
-                    Products
+                    Bills
                 </h3>
                 <div class="dropdown">
                     <button type="button" class="btn btn-alt-secondary" id="dropdown-ecom-filters"
@@ -69,42 +70,34 @@
                     <table class="table table-bordered table-striped table-vcenter table-responsive js-dataTable-full">
                         <thead>
                             <tr>
-                                <th class="text-center" style="width: 100px;">
-                                    <i class="far fa-user"></i>
-                                </th>
-                                <th>Name</th>
-                                <th>Category</th>
-                                <th>Description</th>
+                                <th>Bill ID</th>
+                                <th>Customer</th>
+                                <th>Bill Date</th>
+                                <th>Net Total Amount</th>
                                 <th style="width: 15%;"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($products as $product)
+                            @foreach ($regular_bills as $regular_bill)
                                 <tr>
-                                    <td class="text-center">
-                                        @if ($product->image == null)
-                                            <img src="{{ asset('admin/images/product/default-product.png') }}"
-                                                class="img-avatar img-avatar48">
-                                        @else
-                                            <img src="{{ asset('admin/images/product/' . $product->image) }}"
-                                                class="img-avatar img-avatar48">
-                                        @endif
-                                    </td>
                                     <td class="fw-semibold">
-                                        <strong>{{ $product->name }}</strong>
-                                    </td>
-                                    <td class="fw-semibold">
-                                        <span>{{ $product->Category['name'] }}</span>
+                                        <strong>{{ $regular_bill->id }}</strong>
                                     </td>
                                     <td>
-                                        <span>{{ $product->description }}</span>
+                                        <span>{{ $regular_bill->customer_name }}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{ $regular_bill->invoice_date }}</span>
+                                    </td>
+                                    <td>
+                                        <span>Rs. {{ $regular_bill->net_total_amount }}</span>
                                     </td>
                                     <td class="text-center fs-sm">
-                                        <a class="btn btn-sm btn-secondary"
-                                            href="{{ route('product.edit', $product->id) }}">
-                                            <i class="fa fa-fw fa-pen-to-square"></i>
+                                        <a class="btn btn-sm btn-primary"
+                                            href="{{ route('regularBill.profile', $regular_bill->id) }}">
+                                            <i class="fa fa-fw fa-eye"></i>
                                         </a>
-                                        <a class="btn btn-sm btn-danger" href="{{ route('product.delete', $product->id) }}">
+                                        <a class="btn btn-sm btn-danger" href="">
                                             <i class="fa fa-fw fa-trash-can"></i>
                                         </a>
                                     </td>

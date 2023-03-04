@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Contract;
 use App\Models\Customer;
 use App\Models\CustomerBill;
-use App\Models\CustomerBillProducts;
+use App\Models\CustomerBillProduct;
 use App\Models\Product;
 use App\Models\Stock;
 use Exception;
@@ -65,7 +65,7 @@ class CustomerBillController extends Controller
             $customer_bill->save();
 
             for ($i = 0; $i < count($request->quantity); $i++) {
-                $customer_bill_products = new CustomerBillProducts();
+                $customer_bill_products = new CustomerBillProduct();
                 $customer_bill_products->customerBill_id = $customer_bill->id;
                 $customer_bill_products->product_id = intval($request->product_id[$i]);
                 $customer_bill_products->quantity = $request->quantity[$i];
@@ -120,7 +120,7 @@ class CustomerBillController extends Controller
     public function customerBillProfile($id)
     {
         $customer_bill = CustomerBill::find($id);
-        $customer_bill_products = CustomerBillProducts::where('customerBill_id', $id)->get();
+        $customer_bill_products = CustomerBillProduct::where('customerBill_id', $id)->get();
         return view('customer-bill.profile', compact('customer_bill', 'customer_bill_products'));
     }
 

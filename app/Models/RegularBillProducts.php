@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CustomerBillProducts extends Model
+class RegularBillProducts extends Model
 {
     use HasFactory;
-    protected $table = 'customer_bill_products';
+    protected $table = 'regular_bill_products';
     public $primaryKey = 'id';
     public $timestamps = true;
 
 
-    public function customerBills()
+    public function regularBill()
     {
-        return $this->belongsTo(CustomerBill::class);
+        return $this->belongsTo(RegularBill::class);
     }
 
     public function products()
