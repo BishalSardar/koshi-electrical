@@ -36,7 +36,7 @@
         <div class="block block-rounded">
             <div class="block-header block-header-default">
                 <h3 class="block-title">
-                    Suppliers Bills
+                    customer Bills
                 </h3>
                 <div class="dropdown">
                     <button type="button" class="btn btn-alt-secondary" id="dropdown-ecom-filters"
