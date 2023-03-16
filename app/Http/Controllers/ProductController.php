@@ -72,7 +72,7 @@ class ProductController extends Controller
             $inventory->product_id = $product->id;
             $inventory->save();
 
-            return redirect()->route('product.index')->with('success', "Product Added Successfully");
+            return redirect()->route('product.index')->with('success', "Product Added Successfully");   
         } catch (Exception $exception) {
             return redirect()->back()->with('error', 'Error While Adding Product');
         }

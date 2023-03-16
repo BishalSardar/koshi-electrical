@@ -15,6 +15,7 @@ use App\Http\Controllers\RegularBillController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\SupplierBillController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\WarrantyGuaranteeController;
 use App\Models\Customer;
 
 /*
@@ -93,6 +94,21 @@ Route::get("/product/edit/{id}", [ProductController::class, 'productEdit'])->nam
 Route::post("/product/update/{id}", [ProductController::class, 'productUpdate'])->name('product.update');
 //product delete route
 Route::get("/product/delete/{id}", [ProductController::class, 'productDelete'])->name('product.delete');
+
+
+
+// warranty_guarantee
+// warranty_guarantee list route
+Route::get('/warranty_guarantee/index', [WarrantyGuaranteeController::class, 'warrantyGuaranteeIndex'])->name('warranty.guarantee.index');
+// warranty create page route
+Route::get('/warranty_guarantee/create', [WarrantyGuaranteeController::class, 'warrantyGuaranteeCreate'])->name('warranty.guarantee.create');
+// warranty store route
+Route::post('warranty_guarantee/store', [WarrantyGuaranteeController::class, 'warrantyGuaranteeStore'])->name('warranty.guarantee.store');
+
+
+
+
+
 
 
 // customer
