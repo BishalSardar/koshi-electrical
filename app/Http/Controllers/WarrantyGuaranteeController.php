@@ -37,4 +37,28 @@ class WarrantyGuaranteeController extends Controller
             return redirect()->back()->with($exception);
         }
     }
+
+
+    public function warrantyGuaranteeEdit($id)
+    {
+        $warranty_guarantee = Warranty_Guarantee::find($id);
+        $products = Product::all();
+        return view('warranty_guarantee.edit', compact('warranty_guarantee', 'products'));
+    }
+
+
+    public function warrantyGuaranteeUpdate(Request $request, $id)
+    {
+        try {
+            $warranty_guarantee = Warranty_Guarantee::find($id);
+            $warranty_guarantee->issued_by = $request->issued_by;
+            $warranty_guarantee->type = $request->type;
+            $warranty_guarantee->time_period = $request->time_period;
+            $warranty_guarantee->description = $request->description;
+            $warranty_guarantee->update();
+            return redirect()->route('warranty.guarantee.index')->with('success', "Warranty-Guaranty Updated Successfully");
+        } catch (Exception $exception) {
+            return redirect()->back()->with($exception);
+        }
+    }
 }

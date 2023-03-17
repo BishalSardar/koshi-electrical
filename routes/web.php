@@ -100,10 +100,14 @@ Route::get("/product/delete/{id}", [ProductController::class, 'productDelete'])-
 // warranty_guarantee
 // warranty_guarantee list route
 Route::get('/warranty_guarantee/index', [WarrantyGuaranteeController::class, 'warrantyGuaranteeIndex'])->name('warranty.guarantee.index');
-// warranty create page route
+// warranty_guarantee create page route
 Route::get('/warranty_guarantee/create', [WarrantyGuaranteeController::class, 'warrantyGuaranteeCreate'])->name('warranty.guarantee.create');
-// warranty store route
+// warranty_guarantee store route
 Route::post('warranty_guarantee/store', [WarrantyGuaranteeController::class, 'warrantyGuaranteeStore'])->name('warranty.guarantee.store');
+// warranty_guarantee edit page
+Route::get("/warranty_guarantee/edit/{id}", [WarrantyGuaranteeController::class, 'warrantyGuaranteeEdit'])->name('warranty.guarantee.edit');
+//warranty_guarantee update route
+Route::post("/warranty_guarantee/update/{id}", [WarrantyGuaranteeController::class, 'warrantyGuaranteeUpdate'])->name('warranty.guarantee.update');
 
 
 

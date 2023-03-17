@@ -81,7 +81,7 @@
                             @foreach ($warranty_guaranties as $warranty_guaranty)
                                 <tr>
                                     <td class="fw-semibold">
-                                        <strong>{{ $warranty_guaranty->product_id }}</strong>
+                                        <strong>{{ $warranty_guaranty->Product['name'] }}</strong>
                                     </td>
                                     <td class="fw-semibold">
                                         <span>{{ $warranty_guaranty->type }}</span>
@@ -93,7 +93,8 @@
                                         <span>{{ $warranty_guaranty->description }}</span>
                                     </td>
                                     <td class="text-center fs-sm">
-                                        <a class="btn btn-sm btn-secondary" href="">
+                                        <a class="btn btn-sm btn-secondary"
+                                            href="{{ route('warranty.guarantee.edit', $warranty_guaranty->id) }}">
                                             <i class="fa fa-fw fa-pen-to-square"></i>
                                         </a>
                                         <a class="btn btn-sm btn-danger" href="">
