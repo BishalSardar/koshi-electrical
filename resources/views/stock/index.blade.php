@@ -174,4 +174,5 @@
             </div>
         </div>
         <!-- END Vertically Centered Default Modal -->
-    @endsection
+    </div>
+@endsection
