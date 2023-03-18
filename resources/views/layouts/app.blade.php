@@ -130,6 +130,13 @@
                             </a>
                         </li>
                         <li class="nav-main-item">
+                            <a class="nav-main-link  {{ request()->segment(1) == 'warranty_guarantee_claim' ? 'active' : '' }}"
+                                href="{{ route('warranty.guarantee.claim.index') }}">
+                                <i class="nav-main-link-icon fa fa-cube"></i>
+                                <span class="nav-main-link-name">Warranty/Guarantee Claim</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
                             <a class="nav-main-link  {{ request()->segment(1) == 'supplier-bill' ? 'active' : '' }}"
                                 href="{{ route('supplier-bill.index') }}">
                                 <i class="nav-main-link-icon fa fa-file-invoice"></i>
