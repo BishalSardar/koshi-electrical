@@ -15,6 +15,8 @@ use App\Http\Controllers\RegularBillController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\SupplierBillController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\WarrantyGuaranteeClaimController;
+use App\Http\Controllers\WarrantyGuaranteeController;
 use App\Models\Customer;
 
 /*
@@ -93,6 +95,41 @@ Route::get("/product/edit/{id}", [ProductController::class, 'productEdit'])->nam
 Route::post("/product/update/{id}", [ProductController::class, 'productUpdate'])->name('product.update');
 //product delete route
 Route::get("/product/delete/{id}", [ProductController::class, 'productDelete'])->name('product.delete');
+
+
+
+// warranty_guarantee
+// warranty_guarantee list route
+Route::get('/warranty_guarantee/index', [WarrantyGuaranteeController::class, 'warrantyGuaranteeIndex'])->name('warranty.guarantee.index');
+// warranty_guarantee create page route
+Route::get('/warranty_guarantee/create', [WarrantyGuaranteeController::class, 'warrantyGuaranteeCreate'])->name('warranty.guarantee.create');
+// warranty_guarantee store route
+Route::post('warranty_guarantee/store', [WarrantyGuaranteeController::class, 'warrantyGuaranteeStore'])->name('warranty.guarantee.store');
+// warranty_guarantee edit page
+Route::get("/warranty_guarantee/edit/{id}", [WarrantyGuaranteeController::class, 'warrantyGuaranteeEdit'])->name('warranty.guarantee.edit');
+//warranty_guarantee update route
+Route::post("/warranty_guarantee/update/{id}", [WarrantyGuaranteeController::class, 'warrantyGuaranteeUpdate'])->name('warranty.guarantee.update');
+
+
+
+// warranty_guarantee claim
+Route::get('/warranty_guarantee_claim/index', [WarrantyGuaranteeClaimController::class, 'warrantyGuaranteeClaimIndex'])->name('warranty.guarantee.claim.index');
+// warranty_guarantee customer search
+Route::get('/warranty_guarantee_claim/customer_search_page', [WarrantyGuaranteeClaimController::class, 'warrantyGuaranteeCustomerSearchPage'])->name('warranty.guarantee.customer.search.page');
+// warranty_guarantee customer result page
+Route::post('/warranty_guarantee_claim/customer_search_claim', [WarrantyGuaranteeClaimController::class, 'warrantyGuaranteeCustomerSearchClaim'])->name('warranty.guarantee.customer.search.claim');
+// warranty_guarantee claim
+// Route::post("/warranty_guarantee_customer_claim", [WarrantyGuaranteeClaimController::class, 'claim'])->name('warranty.guarantee.customer.claim');
+
+// warranty_guarantee regular search
+Route::get('/warranty_guarantee_claim/regular_search_page', [WarrantyGuaranteeClaimController::class, 'warrantyGuaranteeRegularSearchPage'])->name('warranty.guarantee.regular.search.page');
+
+
+
+
+
+
+
 
 
 // customer
