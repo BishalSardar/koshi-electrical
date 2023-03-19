@@ -360,7 +360,15 @@
     --
     
     
-    <!-- jQuery (required for DataTables plugin) -->
+
+   
+    <!-- Page JS Code -->
+
+    <!-- Page JS Helpers (Easy Pie Chart + jQuery Sparkline Plugins) -->
+    <script>
+        Dashmix.helpersOnLoad(['jq-easy-pie-chart', 'jq-sparkline']);
+    </script>
+    <script src="{{ asset('admin/js/dashmix.app.min.js') }}"></script>
     <script src="{{ asset('admin/js/lib/jquery.min.js') }}"></script>
 
     <!-- Page JS Plugins -->
@@ -372,15 +380,21 @@
     <script src="{{ asset('admin/js/plugins/datatables-buttons-bs5/js/buttons.bootstrap5.min.js') }}"></script>
     <script src="{{ asset('admin/js/plugins/datatables-buttons-jszip/jszip.min.js') }}"></script>
     <script src="{{ asset('admin/js/plugins/datatables-buttons-pdfmake/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('admin/js/dashmix.app.min.js') }}"></script>
-    <script src="{{ asset('admin/js/lib/jquery.min.js') }}"></script>
-    <script src="{{ asset('admin/js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('admin/js/plugins/datatables-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
-    <script src="{{ asset('admin/js/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
 
     <!-- Page JS Code -->
-    <script src="{{ asset('admin/js/plugins/datatables-responsive-bs5/js/responsive.bootstrap5.min.js') }}"></script>
     <script src="{{ asset('admin/js/app.js') }}"></script>
+
+    <!-- Page JS Plugins -->
+    <script src="{{ asset('admin/js/plugins/chart.js/Chart.min.js') }}"></script>
+
+    <!-- Page JS Code -->
+    <script src="{{ asset('admin/js/pages/be_pages_dashboard.min.js') }}"></script>
+    <script src="{{ asset('admin/js/pages/be_comp_charts.min.js') }}"></script>
+
+    <!-- Page JS Plugins -->
+    <script src="{{ asset('admin/js/plugins/easy-pie-chart/jquery.easypiechart.min.js') }}"></script>
+    <script src="{{ asset('admin/js/plugins/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
+
 </body>
 
 </html>
