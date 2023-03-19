@@ -118,12 +118,16 @@ Route::get('/warranty_guarantee_claim/index', [WarrantyGuaranteeClaimController:
 Route::get('/warranty_guarantee_claim/customer_search_page', [WarrantyGuaranteeClaimController::class, 'warrantyGuaranteeCustomerSearchPage'])->name('warranty.guarantee.customer.search.page');
 // warranty_guarantee customer result page
 Route::post('/warranty_guarantee_claim/customer_search_claim', [WarrantyGuaranteeClaimController::class, 'warrantyGuaranteeCustomerSearchClaim'])->name('warranty.guarantee.customer.search.claim');
-// warranty_guarantee claim
-// Route::post("/warranty_guarantee_customer_claim", [WarrantyGuaranteeClaimController::class, 'claim'])->name('warranty.guarantee.customer.claim');
+// warranty_guarantee claim profile
+Route::get('/warranty_guarantee_claim/profile/{id}', [WarrantyGuaranteeClaimController::class, 'warrantyGuaranteeClaimProfile'])->name('warranty.guarantee.claim.profile');
+//warranty_guarantee delete route
+Route::get("/warranty_guarantee_claim/delete/{id}", [WarrantyGuaranteeClaimController::class, 'warrantyGuaranteeClaimDelete'])->name('warranty.guarantee.claim.delete');
+
 
 // warranty_guarantee regular search
 Route::get('/warranty_guarantee_claim/regular_search_page', [WarrantyGuaranteeClaimController::class, 'warrantyGuaranteeRegularSearchPage'])->name('warranty.guarantee.regular.search.page');
-
+// warranty_guarantee customer result page
+Route::post('/warranty_guarantee_claim/regular_search_claim', [WarrantyGuaranteeClaimController::class, 'warrantyGuaranteeRegularSearchClaim'])->name('warranty.guarantee.regular.search.claim');
 
 
 

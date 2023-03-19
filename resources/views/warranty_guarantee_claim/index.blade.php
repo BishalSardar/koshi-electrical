@@ -35,7 +35,7 @@
             <div class="col-6 col-lg-3">
                 <a class="block block-rounded block-link-shadow text-center h-100 mb-0" href="javascript:void(0)">
                     <div class="block-content py-5">
-                        <div class="fs-3 fw-semibold text-dark mb-1">5</div>
+                        <div class="fs-3 fw-semibold text-dark mb-1">{{ $count }}</div>
                         <p class="fw-semibold fs-sm text-muted text-uppercase mb-0">
                             All Claimed Warranties
                         </p>
@@ -83,38 +83,50 @@
                         <thead>
                             <tr>
                                 <th>Product</th>
-                                <th>Type</th>
-                                <th>Time Period</th>
-                                <th>Description</th>
+                                <th>Customer</th>
+                                <th>Date</th>
+                                <th>Amount</th>
                                 <th style="width: 15%;"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($warranty_guaranties as $warranty_guaranty)
+                            @foreach ($warranty_guaranty_claims as $item)
                                 <tr>
                                     <td class="fw-semibold">
-                                        <strong>{{ $warranty_guaranty->Product['name'] }}</strong>
+                                        <strong>{{ $item->Product['name'] }}</strong>
                                     </td>
                                     <td class="fw-semibold">
-                                        <span>{{ $warranty_guaranty->type }}</span>
-                                    </td>
-                                    <td class="fw-semibold">
-                                        <span>{{ $warranty_guaranty->time_period }} months</span>
+
+                                        @if (!$item->customer_id)
+                                            <span>{{ $item->regular_customer_name }}</span>
+                                        @else
+                                            <span>{{ $item->Customer['name'] }}</span>
+                                        @endif
                                     </td>
                                     <td>
-                                        <span>{{ $warranty_guaranty->description }}</span>
+                                        <span>
+                                            @php
+                                                $dateString = $item->invoice_date;
+                                                $timestamp = strtotime($dateString);
+                                                $date = date('F jS, Y', $timestamp);
+                                            @endphp
+                                            {{ $date }}</span>
+                                    </td>
+                                    <td class="fw-semibold">
+                                        <span>{{ $item->amount }}</span>
                                     </td>
                                     <td class="text-center fs-sm">
                                         <a class="btn btn-sm btn-secondary"
-                                            href="{{ route('warranty.guarantee.edit', $warranty_guaranty->id) }}">
-                                            <i class="fa fa-fw fa-pen-to-square"></i>
+                                            href="{{ route('warranty.guarantee.claim.profile', $item->id) }}">
+                                            <i class="fa fa-fw fa-eye"></i>
                                         </a>
-                                        <a class="btn btn-sm btn-danger" href="">
+                                        <a class="btn btn-sm btn-danger"
+                                            href="{{ route('warranty.guarantee.claim.delete', $item->id) }}">
                                             <i class="fa fa-fw fa-trash-can"></i>
                                         </a>
                                     </td>
                                 </tr>
-                            @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

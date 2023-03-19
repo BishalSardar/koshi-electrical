@@ -6,7 +6,7 @@
         <!-- Invoice -->
         <div class="block block-rounded">
             <div class="block-header block-header-default">
-                <h3 class="block-title">#1</h3>
+                <h3 class="block-title">#{{ $warranty_guarantee_claim->id }}</h3>
                 <div class="block-options">
                     <!-- Print Page functionality is initialized dmPrint() -->
                     <button type="button" class="btn-block-option" onclick="Dashmix.helpers('dm-print');">
@@ -20,16 +20,19 @@
                     <div class="row mb-4">
                         <!-- Company Info -->
                         <div class="col-6">
-                            {{-- @php
-                                $customer = DB::table('customers')
-                                    ->where('id', $customer_bill->customer_id)
-                                    ->first();
-                            @endphp
-                            <p class="h3">{{ $customer->name }}</p>
+                            @if (!$warranty_guarantee_claim->customer_id)
+                                <p class="h3">{{ $warranty_guarantee_claim->regular_customer_name }}</p>
+                            @else
+                                <p class="h3">{{ $warranty_guarantee_claim->Customer['name'] }}</p>
+                            @endif
                             <address>
-                                {{ $customer->address }}<br>
-                                {{ $customer->phone }}
-                            </address> --}}
+                                @if (!$warranty_guarantee_claim->customer_id)
+                                    {{-- nothing --}}
+                                @else
+                                    {{ $warranty_guarantee_claim->Customer['address'] }}<br>
+                                    {{ $warranty_guarantee_claim->Customer['phone'] }}
+                                @endif
+                            </address>
                         </div>
                         <!-- END Company Info -->
 
@@ -37,17 +40,12 @@
                         <div class="col-6 text-end">
                             <p class="h3">Invoice</p>
                             <address>
-                                {{-- {{ $customer_bill->invoice_date }}<br>
-                                {{ strtoupper($customer_bill->invoice_type) }}<br>
-                                @if ($customer_bill->status == 0)
-                                    <td>
-                                        <span class="badge bg-danger">Unpaid</span>
-                                    </td>
-                                @else
-                                    <td>
-                                        <span class="badge bg-success">Paid</span>
-                                    </td>
-                                @endif --}}
+                                @php
+                                    $dateString = $warranty_guarantee_claim->invoice_date;
+                                    $timestamp = strtotime($dateString);
+                                    $date = date('F jS, Y', $timestamp);
+                                @endphp
+                                {{ $date }}<br>
                             </address>
                         </div>
                         <!-- END Client Info -->
@@ -79,36 +77,21 @@
                                     <td class="text-end">$1.800,00</td>
                                     <td class="text-end">$1.800,00</td>
                                 </tr>  --}}
-                                {{-- @foreach ($customer_bill_products as $item)
-                                    <tr>
-                                        @php
-                                            $products = DB::table('products')
-                                                ->where('id', $item->product_id)
-                                                ->first();
-                                        @endphp
-                                        <td>
-                                            <p class="fw-semibold mb-1">{{ $products->name }}</p>
-                                        </td>
-                                        <td class="text-center">{{ $item->quantity }}</td>
-                                        <td class="text-center">{{ $item->unit }}</td>
-                                        <td class="text-end">Rs. {{ $item->rate }}</td>
-                                        <td class="text-end">Rs. {{ $item->amount }}</td>
-                                    </tr>
-                                @endforeach
                                 <tr>
-                                    <td colspan="4" class="fw-semibold text-end">Gross Total Amount</td>
-                                    <td class="text-end">Rs. {{ $customer_bill->gross_total_amount }}</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="4" class="fw-semibold text-end">Discount</td>
-                                    <td class="text-end">Rs. {{ $customer_bill->discount }}</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="4" class="fw-bold text-uppercase text-end bg-body-light">Net Total
-                                        Amount</td>
-                                    <td class="fw-bold text-end bg-body-light">Rs. {{ $customer_bill->net_total_amount }}
+                                    <td>
+                                        <p class="fw-semibold mb-1">{{ $warranty_guarantee_claim->Product['name'] }}</p>
                                     </td>
-                                </tr> --}}
+                                    <td class="text-center">{{ $warranty_guarantee_claim->quantity }}</td>
+                                    <td class="text-center">{{ $warranty_guarantee_claim->unit }}</td>
+                                    <td class="text-end">Rs. {{ $warranty_guarantee_claim->rate }}</td>
+                                    <td class="text-end">Rs. {{ $warranty_guarantee_claim->amount }}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" class="fw-bold text-uppercase text-end bg-body-light">
+                                        Amount</td>
+                                    <td class="fw-bold text-end bg-body-light">Rs. {{ $warranty_guarantee_claim->amount }}
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -116,7 +99,7 @@
 
                     <!-- Footer -->
                     <p class="text-muted text-center my-5">
-                        {{ $customer_bill->remark }}
+                        {{ $warranty_guarantee_claim->remark }}
                     </p>
                     <!-- END Footer -->
                 </div>
