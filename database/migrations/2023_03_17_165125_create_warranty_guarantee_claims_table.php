@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->string('regular_customer_name')->nullable();
             $table->string('quantity');
             $table->string('rate');
             $table->string('unit');

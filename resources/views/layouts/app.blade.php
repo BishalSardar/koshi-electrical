@@ -23,6 +23,10 @@
 
 
     <!-- Stylesheets -->
+
+    <!-- Dashmix framework -->
+    <link rel="stylesheet" id="css-main" href="{{ asset('admin/css/dashmix.min.css') }}">
+
     <!-- Page JS Plugins CSS -->
     <link rel="stylesheet" href="{{ asset('admin/js/plugins/datatables-bs5/css/dataTables.bootstrap5.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/js/plugins/datatables-buttons-bs5/css/buttons.bootstrap5.min.css') }}">
@@ -30,9 +34,6 @@
         href="{{ asset('admin/js/plugins/datatables-responsive-bs5/css/responsive.bootstrap5.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/js/plugins/select2/css/select2.min.css') }}">
 
-
-    <!-- Dashmix framework -->
-    <link rel="stylesheet" id="css-main" href="{{ asset('admin/css/dashmix.min.css') }}">
 
     <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
     <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/xwork.min.css"> -->
@@ -171,15 +172,6 @@
                         <i class="fa fa-fw fa-bars"></i>
                     </button>
                     <!-- END Toggle Sidebar -->
-
-                    <!-- Open Search Section -->
-                    <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                    <button type="button" class="btn btn-alt-secondary" data-toggle="layout"
-                        data-action="header_search_on">
-                        <i class="fa fa-fw opacity-50 fa-search"></i> <span
-                            class="ms-1 d-none d-sm-inline-block">Search</span>
-                    </button>
-                    <!-- END Open Search Section -->
                 </div>
                 <!-- END Left Section -->
 
@@ -226,84 +218,6 @@
                     </div>
                     <!-- END User Dropdown -->
 
-                    <!-- Notifications Dropdown -->
-                    <div class="dropdown d-inline-block">
-                        <button type="button" class="btn btn-alt-secondary" id="page-header-notifications-dropdown"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-fw fa-bell"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
-                            aria-labelledby="page-header-notifications-dropdown">
-                            <div class="bg-primary-dark rounded-top fw-semibold text-white text-center p-3">
-                                Notifications
-                            </div>
-                            <ul class="nav-items my-2">
-                                <li>
-                                    <a class="d-flex text-dark py-2" href="javascript:void(0)">
-                                        <div class="flex-shrink-0 mx-3">
-                                            <i class="fa fa-fw fa-check-circle text-success"></i>
-                                        </div>
-                                        <div class="flex-grow-1 fs-sm pe-2">
-                                            <div class="fw-semibold">App was updated to v5.6!</div>
-                                            <div class="text-muted">3 min ago</div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="d-flex text-dark py-2" href="javascript:void(0)">
-                                        <div class="flex-shrink-0 mx-3">
-                                            <i class="fa fa-fw fa-user-plus text-info"></i>
-                                        </div>
-                                        <div class="flex-grow-1 fs-sm pe-2">
-                                            <div class="fw-semibold">New Subscriber was added! You now have 2580!
-                                            </div>
-                                            <div class="text-muted">10 min ago</div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="d-flex text-dark py-2" href="javascript:void(0)">
-                                        <div class="flex-shrink-0 mx-3">
-                                            <i class="fa fa-fw fa-times-circle text-danger"></i>
-                                        </div>
-                                        <div class="flex-grow-1 fs-sm pe-2">
-                                            <div class="fw-semibold">Server backup failed to complete!</div>
-                                            <div class="text-muted">30 min ago</div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="d-flex text-dark py-2" href="javascript:void(0)">
-                                        <div class="flex-shrink-0 mx-3">
-                                            <i class="fa fa-fw fa-exclamation-circle text-warning"></i>
-                                        </div>
-                                        <div class="flex-grow-1 fs-sm pe-2">
-                                            <div class="fw-semibold">You are running out of space. Please consider
-                                                upgrading your plan.</div>
-                                            <div class="text-muted">1 hour ago</div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="d-flex text-dark py-2" href="javascript:void(0)">
-                                        <div class="flex-shrink-0 mx-3">
-                                            <i class="fa fa-fw fa-plus-circle text-primary"></i>
-                                        </div>
-                                        <div class="flex-grow-1 fs-sm pe-2">
-                                            <div class="fw-semibold">New Sale! + $30</div>
-                                            <div class="text-muted">2 hours ago</div>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="p-2 border-top">
-                                <a class="btn btn-alt-primary w-100 text-center" href="javascript:void(0)">
-                                    <i class="fa fa-fw fa-eye opacity-50 me-1"></i> View All
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END Notifications Dropdown -->
                 </div>
                 <!-- END Right Section -->
             </div>
@@ -360,7 +274,11 @@
     --
     
     
-    <!-- jQuery (required for DataTables plugin) -->
+
+   
+    <!-- Page JS Code -->
+
+    <script src="{{ asset('admin/js/dashmix.app.min.js') }}"></script>
     <script src="{{ asset('admin/js/lib/jquery.min.js') }}"></script>
 
     <!-- Page JS Plugins -->
@@ -372,15 +290,17 @@
     <script src="{{ asset('admin/js/plugins/datatables-buttons-bs5/js/buttons.bootstrap5.min.js') }}"></script>
     <script src="{{ asset('admin/js/plugins/datatables-buttons-jszip/jszip.min.js') }}"></script>
     <script src="{{ asset('admin/js/plugins/datatables-buttons-pdfmake/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('admin/js/dashmix.app.min.js') }}"></script>
-    <script src="{{ asset('admin/js/lib/jquery.min.js') }}"></script>
-    <script src="{{ asset('admin/js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('admin/js/plugins/datatables-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
-    <script src="{{ asset('admin/js/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
 
     <!-- Page JS Code -->
-    <script src="{{ asset('admin/js/plugins/datatables-responsive-bs5/js/responsive.bootstrap5.min.js') }}"></script>
     <script src="{{ asset('admin/js/app.js') }}"></script>
+
+    <!-- Page JS Plugins -->
+    <script src="{{ asset('admin/js/plugins/chart.js/Chart.min.js') }}"></script>
+
+    <!-- Page JS Code -->
+    <script src="{{ asset('admin/js/pages/be_pages_dashboard.min.js') }}"></script>
+    <script src="{{ asset('admin/js/pages/be_comp_charts.min.js') }}"></script>
+
 </body>
 
 </html>
