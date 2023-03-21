@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegularBillController;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\SupplierBillController;
 use App\Http\Controllers\SupplierController;
@@ -256,3 +257,28 @@ Route::get('/expense/edit/{id}', [ExpenseController::class, 'expenseEdit'])->nam
 Route::post("/expense/update/{id}", [ExpenseController::class, 'expenseUpdate'])->name('expense.update');
 // expense delete route
 Route::get("/expense/delete/{id}", [ExpenseController::class, 'expenseDelete'])->name('expense.delete');
+
+
+
+
+// staff
+// staff index page route
+Route::get('/staff/index', [StaffController::class, 'staffIndex'])->name('staff.index');
+// contracts create page route
+Route::get('/staff/create', [StaffController::class, 'staffCreate'])->name('staff.create');
+// staff store route
+Route::post("/staff/store", [StaffController::class, 'staffStore'])->name('staff.store');
+// staff edit page route
+Route::get('/staff/edit/{id}', [StaffController::class, 'staffEdit'])->name('staff.edit');
+// staff update route
+Route::post("/staff/update/{id}", [StaffController::class, 'staffUpdate'])->name('staff.update');
+// staff delete route
+Route::get("/staff/delete/{id}", [StaffController::class, 'staffDelete'])->name('staff.delete');
+//staff profile page
+Route::get('/staff/profile/{id}', [StaffController::class, 'staffProfile'])->name('staff.profile');
+//staff borrow page
+Route::get('/staff/borrow/{id}', [StaffController::class, 'staffBorrow'])->name('staff.borrow');
+// staff borrow store
+Route::post('/staff/borrow/store/{id}', [StaffController::class, 'staffBorrowStore'])->name('staff.borrow.store');
+// staff salary
+Route::get('/staff/salary/{id}', [StaffController::class, 'staffSalary'])->name('staff.salary');
