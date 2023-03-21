@@ -67,6 +67,7 @@
                 <!-- Side Navigation -->
                 <div class="content-side">
                     <ul class="nav-main">
+
                         <li class="nav-main-item">
                             <a class="nav-main-link {{ request()->segment(1) == 'home' ? 'active' : '' }}"
                                 href="{{ route('home') }}">
@@ -74,46 +75,12 @@
                                 <span class="nav-main-link-name">Dashboard</span>
                             </a>
                         </li>
+
                         <li class="nav-main-item">
-                            <a class="nav-main-link {{ request()->segment(1) == 'expense' ? 'active' : '' }}"
-                                href="{{ route('expense.index') }}">
-                                <i class="nav-main-link-icon fa fa-home"></i>
-                                <span class="nav-main-link-name">Expense</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link {{ request()->segment(1) == 'regular-bill' ? 'active' : '' }}"
-                                href="{{ route('regularBill.index') }}">
-                                <i class="nav-main-link-icon fa fa-file-invoice"></i>
-                                <span class="nav-main-link-name">Regular Bill</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link  {{ request()->segment(1) == 'contract' ? 'active' : '' }}"
-                                href="{{ route('contract.index') }}">
-                                <i class="nav-main-link-icon fa fa-file-contract"></i>
-                                <span class="nav-main-link-name">Contracts</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link  {{ request()->segment(1) == 'customer-bill' ? 'active' : '' }}"
-                                href="{{ route('customerBill.index') }}">
-                                <i class="nav-main-link-icon fa fa-address-book"></i>
-                                <span class="nav-main-link-name">Customer Bill</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link  {{ request()->segment(1) == 'customer' ? 'active' : '' }}"
-                                href="{{ route('customer.index') }}">
-                                <i class="nav-main-link-icon fa fa-user"></i>
-                                <span class="nav-main-link-name">Customer</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link  {{ request()->segment(1) == 'stock' ? 'active' : '' }}"
-                                href="{{ route('stock.index') }}">
-                                <i class="nav-main-link-icon fa fa-cubes"></i>
-                                <span class="nav-main-link-name">Stock</span>
+                            <a class="nav-main-link  {{ request()->segment(1) == 'supplier' ? 'active' : '' }}"
+                                href="{{ route('supplier.index') }}">
+                                <i class="nav-main-link-icon fa fa-industry"></i>
+                                <span class="nav-main-link-name">Supplier</span>
                             </a>
                         </li>
                         <li class="nav-main-item">
@@ -130,34 +97,111 @@
                                 <span class="nav-main-link-name">Product</span>
                             </a>
                         </li>
+
                         <li class="nav-main-item">
-                            <a class="nav-main-link  {{ request()->segment(1) == 'warranty_guarantee' ? 'active' : '' }}"
-                                href="{{ route('warranty.guarantee.index') }}">
+                            <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
+                                aria-expanded="false" href="#">
+                                <i class="nav-main-link-icon fa fa-ghost"></i>
+                                <span class="nav-main-link-name">Customer</span>
+                            </a>
+                            <ul class="nav-main-submenu">
+                                <li class="nav-main-item">
+                                    <a class="nav-main-link  {{ request()->segment(1) == 'customer' ? 'active' : '' }}"
+                                        href="{{ route('customer.index') }}">
+                                        <i class="nav-main-link-icon fa fa-user"></i>
+                                        <span class="nav-main-link-name">Customer</span>
+                                    </a>
+                                </li>
+                                <li class="nav-main-item">
+                                    <a class="nav-main-link  {{ request()->segment(1) == 'contract' ? 'active' : '' }}"
+                                        href="{{ route('contract.index') }}">
+                                        <i class="nav-main-link-icon fa fa-file-contract"></i>
+                                        <span class="nav-main-link-name">Contracts</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <li class="nav-main-item">
+                            <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
+                                aria-expanded="false" href="#">
+                                <i class="nav-main-link-icon fa fa-ghost"></i>
+                                <span class="nav-main-link-name">Bills</span>
+                            </a>
+                            <ul class="nav-main-submenu">
+                                <li class="nav-main-item">
+                                    <a class="nav-main-link  {{ request()->segment(1) == 'supplier-bill' ? 'active' : '' }}"
+                                        href="{{ route('supplier-bill.index') }}">
+                                        <i class="nav-main-link-icon fa fa-file-invoice"></i>
+                                        <span class="nav-main-link-name">Supplier Bill</span>
+                                    </a>
+                                </li>
+                                <li class="nav-main-item">
+                                    <a class="nav-main-link {{ request()->segment(1) == 'regular-bill' ? 'active' : '' }}"
+                                        href="{{ route('regularBill.index') }}">
+                                        <i class="nav-main-link-icon fa fa-file-invoice"></i>
+                                        <span class="nav-main-link-name">Regular Bill</span>
+                                    </a>
+                                </li>
+                                <li class="nav-main-item">
+                                    <a class="nav-main-link  {{ request()->segment(1) == 'customer-bill' ? 'active' : '' }}"
+                                        href="{{ route('customerBill.index') }}">
+                                        <i class="nav-main-link-icon fa fa-address-book"></i>
+                                        <span class="nav-main-link-name">Customer Bill</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link  {{ request()->segment(1) == 'stock' ? 'active' : '' }}"
+                                href="{{ route('stock.index') }}">
+                                <i class="nav-main-link-icon fa fa-cubes"></i>
+                                <span class="nav-main-link-name">Stock</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
+                                aria-expanded="false" href="#">
+                                <i class="nav-main-link-icon fa fa-ghost"></i>
+                                <span class="nav-main-link-name">Warranty Guarantee</span>
+                            </a>
+                            <ul class="nav-main-submenu">
+                                <li class="nav-main-item">
+                                    <a class="nav-main-link  {{ request()->segment(1) == 'warranty_guarantee' ? 'active' : '' }}"
+                                        href="{{ route('warranty.guarantee.index') }}">
+                                        <i class="nav-main-link-icon fa fa-cube"></i>
+                                        <span class="nav-main-link-name">Warranty/Guarantee</span>
+                                    </a>
+                                </li>
+                                <li class="nav-main-item">
+                                    <a class="nav-main-link  {{ request()->segment(1) == 'warranty_guarantee_claim' ? 'active' : '' }}"
+                                        href="{{ route('warranty.guarantee.claim.index') }}">
+                                        <i class="nav-main-link-icon fa fa-cube"></i>
+                                        <span class="nav-main-link-name">Warranty/Guarantee Claim</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-main-item">
+                            <a class="nav-main-link {{ request()->segment(1) == 'expense' ? 'active' : '' }}"
+                                href="{{ route('expense.index') }}">
+                                <i class="nav-main-link-icon fa fa-home"></i>
+                                <span class="nav-main-link-name">Expenses</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link  {{ request()->segment(1) == 'staff' ? 'active' : '' }}"
+                                href="{{ route('staff.index') }}">
                                 <i class="nav-main-link-icon fa fa-cube"></i>
-                                <span class="nav-main-link-name">Warranty/Guarantee</span>
+                                <span class="nav-main-link-name">Staffs</span>
                             </a>
                         </li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link  {{ request()->segment(1) == 'warranty_guarantee_claim' ? 'active' : '' }}"
-                                href="{{ route('warranty.guarantee.claim.index') }}">
-                                <i class="nav-main-link-icon fa fa-cube"></i>
-                                <span class="nav-main-link-name">Warranty/Guarantee Claim</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link  {{ request()->segment(1) == 'supplier-bill' ? 'active' : '' }}"
-                                href="{{ route('supplier-bill.index') }}">
-                                <i class="nav-main-link-icon fa fa-file-invoice"></i>
-                                <span class="nav-main-link-name">Supplier Bill</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link  {{ request()->segment(1) == 'supplier' ? 'active' : '' }}"
-                                href="{{ route('supplier.index') }}">
-                                <i class="nav-main-link-icon fa fa-industry"></i>
-                                <span class="nav-main-link-name">Supplier</span>
-                            </a>
-                        </li>
+
+
+
                     </ul>
                 </div>
                 <!-- END Side Navigation -->

@@ -11,7 +11,8 @@ class ExpenseController extends Controller
     public function expenseIndex()
     {
         $expenses = Expense::all();
-        return view('expense.index', compact('expenses'));
+        $expenseAmount = Expense::sum('cost');
+        return view('expense.index', compact('expenses', 'expenseAmount'));
     }
 
     public function expenseCreate()
