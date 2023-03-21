@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContractController;
 use App\Http\Controllers\CustomerBillController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ExpenseController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -239,3 +240,19 @@ Route::get("/contract/delete/{id}", [ContractController::class, 'contractDelete'
 Route::get('/contract/status/{id}', [ContractController::class, 'contractStatus'])->name('contract.change.status');
 // contract profile
 Route::get('/contract/profile/{id}', [ContractController::class, 'contractProfile'])->name('contract.profile');
+
+
+
+// expense
+// expense index page route
+Route::get('/expense/index', [ExpenseController::class, 'expenseIndex'])->name('expense.index');
+// contracts create page route
+Route::get('/expense/create', [ExpenseController::class, 'expenseCreate'])->name('expense.create');
+// expense store route
+Route::post("/expense/store", [ExpenseController::class, 'expenseStore'])->name('expense.store');
+// expense edit page route
+Route::get('/expense/edit/{id}', [ExpenseController::class, 'expenseEdit'])->name('expense.edit');
+// expense update route
+Route::post("/expense/update/{id}", [ExpenseController::class, 'expenseUpdate'])->name('expense.update');
+// expense delete route
+Route::get("/expense/delete/{id}", [ExpenseController::class, 'expenseDelete'])->name('expense.delete');
