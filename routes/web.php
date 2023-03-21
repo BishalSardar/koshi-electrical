@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContractController;
 use App\Http\Controllers\CustomerBillController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ExpenseController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegularBillController;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\SupplierBillController;
 use App\Http\Controllers\SupplierController;
@@ -239,3 +241,44 @@ Route::get("/contract/delete/{id}", [ContractController::class, 'contractDelete'
 Route::get('/contract/status/{id}', [ContractController::class, 'contractStatus'])->name('contract.change.status');
 // contract profile
 Route::get('/contract/profile/{id}', [ContractController::class, 'contractProfile'])->name('contract.profile');
+
+
+
+// expense
+// expense index page route
+Route::get('/expense/index', [ExpenseController::class, 'expenseIndex'])->name('expense.index');
+// contracts create page route
+Route::get('/expense/create', [ExpenseController::class, 'expenseCreate'])->name('expense.create');
+// expense store route
+Route::post("/expense/store", [ExpenseController::class, 'expenseStore'])->name('expense.store');
+// expense edit page route
+Route::get('/expense/edit/{id}', [ExpenseController::class, 'expenseEdit'])->name('expense.edit');
+// expense update route
+Route::post("/expense/update/{id}", [ExpenseController::class, 'expenseUpdate'])->name('expense.update');
+// expense delete route
+Route::get("/expense/delete/{id}", [ExpenseController::class, 'expenseDelete'])->name('expense.delete');
+
+
+
+
+// staff
+// staff index page route
+Route::get('/staff/index', [StaffController::class, 'staffIndex'])->name('staff.index');
+// contracts create page route
+Route::get('/staff/create', [StaffController::class, 'staffCreate'])->name('staff.create');
+// staff store route
+Route::post("/staff/store", [StaffController::class, 'staffStore'])->name('staff.store');
+// staff edit page route
+Route::get('/staff/edit/{id}', [StaffController::class, 'staffEdit'])->name('staff.edit');
+// staff update route
+Route::post("/staff/update/{id}", [StaffController::class, 'staffUpdate'])->name('staff.update');
+// staff delete route
+Route::get("/staff/delete/{id}", [StaffController::class, 'staffDelete'])->name('staff.delete');
+//staff profile page
+Route::get('/staff/profile/{id}', [StaffController::class, 'staffProfile'])->name('staff.profile');
+//staff borrow page
+Route::get('/staff/borrow/{id}', [StaffController::class, 'staffBorrow'])->name('staff.borrow');
+// staff borrow store
+Route::post('/staff/borrow/store/{id}', [StaffController::class, 'staffBorrowStore'])->name('staff.borrow.store');
+// staff salary
+Route::get('/staff/salary/{id}', [StaffController::class, 'staffSalary'])->name('staff.salary');

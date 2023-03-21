@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Contract;
 use App\Models\Customer;
 use App\Models\CustomerBill;
+use App\Models\CustomerBillProduct;
 use App\Models\CustomerBillProducts;
 use Exception;
 use Illuminate\Http\Request;
@@ -109,7 +110,7 @@ class ContractController extends Controller
 
         $new_bill_details = [];
         for ($i = 0; $i < count($contract_bills); $i++) {
-            array_push($new_bill_details, CustomerBillProducts::where('customerBill_id', $new_bill[$i])->get());
+            array_push($new_bill_details, CustomerBillProduct::where('customerBill_id', $new_bill[$i])->get());
         }
 
         $new_bill_details_filtered = array_filter($new_bill_details, fn ($value) => !is_null($value));
