@@ -73,9 +73,7 @@ class AdminProfileController extends Controller
                     'confirm_password' => ['required', 'same:new_password'],
                 ]
             );
-            dd($request);
             $user = User::find(Auth::user()->id);
-            dd($user);
             User::whereId($user->id)->update(['password' => Hash::make($request->new_password)]);
             return redirect()->route('admin.profile')->with('success', "Password Updated Successfully");
         } catch (Exception $exception) {

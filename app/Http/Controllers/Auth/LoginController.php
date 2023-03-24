@@ -51,7 +51,7 @@ class LoginController extends Controller
             if (Auth::user()->is_admin === 1) {
                 return redirect()->route('home');
             } else {
-                return redirect()->route('login')->with('error', 'Input proper email or password');
+                return redirect()->route('login')->with('success', 'Logged in to the system');
             }
         } else {
             return redirect()->route('login')->with('error', 'Input proper email or password');
