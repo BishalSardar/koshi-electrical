@@ -25,6 +25,7 @@ class RegularBillController extends Controller
         $products = Product::all();
         return view('regular-customer-bill.create', compact('products'));
     }
+    
 
     // regular bill store function
     public function regularBillStore(Request $request)
@@ -81,5 +82,11 @@ class RegularBillController extends Controller
         $regular_bill = RegularBill::find($id);
         $regular_bill_products = RegularBillProducts::where('regularBill_id', $id)->get();
         return view('regular-customer-bill.profile', compact('regular_bill', 'regular_bill_products'));
+    }
+    public function regularBillDelete($id)
+    {
+        $regular_bill = RegularBill::find($id);
+        $regular_bill->delete();
+        return redirect()->route('regularBill.index')->with('success', 'regular bill Deleted Successfully');
     }
 }

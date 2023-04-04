@@ -71,7 +71,7 @@ class ContractController extends Controller
     {
         $contract = Contract::find($id);
         $contract->delete();
-        return redirect()->route('contract.index')->with('success', 'Contract Updated Successfully');
+        return redirect()->route('contract.index')->with('success', 'Contract Deleted Successfully');
     }
 
 

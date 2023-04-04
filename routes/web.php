@@ -62,6 +62,8 @@ Route::get('/regular-bill/create', [RegularBillController::class, 'regularBillCr
 Route::post("/regular-bill/store", [RegularBillController::class, 'regularBillStore'])->name('regularBill.store');
 // regular bill page route
 Route::get('/regular-bill/profile/{id}', [RegularBillController::class, 'regularBillProfile'])->name('regularBill.profile');
+// regular bill delete route
+Route::get("/regularbill/delete/{id}", [RegularBillController::class, 'regularBillDelete'])->name('regularBill.delete');
 
 
 
@@ -111,6 +113,8 @@ Route::post('warranty_guarantee/store', [WarrantyGuaranteeController::class, 'wa
 Route::get("/warranty_guarantee/edit/{id}", [WarrantyGuaranteeController::class, 'warrantyGuaranteeEdit'])->name('warranty.guarantee.edit');
 //warranty_guarantee update route
 Route::post("/warranty_guarantee/update/{id}", [WarrantyGuaranteeController::class, 'warrantyGuaranteeUpdate'])->name('warranty.guarantee.update');
+//warranty_guratantee delete route
+Route::get("/warranty_guarantee/delete/{id}", [WarrantyGuaranteeController::class, 'warrantyGuaranteeDelete'])->name('warranty.guarantee.delete');
 
 
 

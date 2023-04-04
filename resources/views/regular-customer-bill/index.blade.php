@@ -97,7 +97,7 @@
                                             href="{{ route('regularBill.profile', $regular_bill->id) }}">
                                             <i class="fa fa-fw fa-eye"></i>
                                         </a>
-                                        <a class="btn btn-sm btn-danger" href="">
+                                        <a class="btn btn-sm btn-danger" href="{{ route('regularBill.delete', $regular_bill->id) }}">
                                             <i class="fa fa-fw fa-trash-can"></i>
                                         </a>
                                     </td>
