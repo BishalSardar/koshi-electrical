@@ -61,4 +61,11 @@ class WarrantyGuaranteeController extends Controller
             return redirect()->back()->with($exception);
         }
     }
+    public function warrantyGuaranteeDelete($id)
+    {
+        $warrantyGuarantee = Warranty_Guarantee::find($id);
+        $warrantyGuarantee->delete();
+        return redirect()->route('warranty.guarantee.index')->with('success', "warrantyGuarantee Deleted Successfully");
+    }
+
 }

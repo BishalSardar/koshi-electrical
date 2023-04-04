@@ -97,7 +97,7 @@
                                             href="{{ route('warranty.guarantee.edit', $warranty_guaranty->id) }}">
                                             <i class="fa fa-fw fa-pen-to-square"></i>
                                         </a>
-                                        <a class="btn btn-sm btn-danger" href="">
+                                        <a class="btn btn-sm btn-danger" href="{{ route('warranty.guarantee.delete', $warranty_guaranty->id) }}">
                                             <i class="fa fa-fw fa-trash-can"></i>
                                         </a>
                                     </td>
