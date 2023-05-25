@@ -15,7 +15,8 @@
                             {{ csrf_field() }}
                             <div class="mb-4">
                                 <label class="form-label" for="example-file-input">Profile Image</label>
-                                <input class="form-control" type="file" id="example-file-input" name="image">
+                                <input class="form-control" type="file" id="example-file-input"
+                                    accept=".jpg') }}, .png') }}, image/jpeg, image/png" name="image">
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="dm-ecom-customer-name">Name</label>
