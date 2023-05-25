@@ -87,7 +87,6 @@ class SupplierController extends Controller
 
         $supplier_bills = SupplierBill::where('supplier_id', $supplier->id)->get();
 
-
         return view('supplier.profile', compact('supplier', 'no_of_bills', 'total_business_done', 'supplier_bills'));
     }
 }

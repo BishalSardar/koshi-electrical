@@ -31,7 +31,8 @@
                                     @endif
                                 </div>
                                 <label class="form-label" for="dm-profile-edit-avatar">Choose a new profile</label>
-                                <input class="form-control" type="file" id="dm-profile-edit-avatar" name="image">
+                                <input class="form-control" type="file" id="dm-profile-edit-avatar"
+                                    accept=".jpg') }}, .png') }}, image/jpeg, image/png" name="image">
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="dm-profile-edit-name">Name</label>
