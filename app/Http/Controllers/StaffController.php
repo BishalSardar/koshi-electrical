@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\StaffAccountActivation;
 use App\Models\Staff;
 use App\Models\StaffAccount;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Mail;
 
 class StaffController extends Controller
 {
@@ -52,6 +54,14 @@ class StaffController extends Controller
             $staff->email_address = $request->email_address;
 
             $staff->save();
+
+            $mailData = [
+                'name' => $request->name,
+                'address' => $request->address,
+                'salary' => $request->salary
+            ];
+
+            Mail::to($request->email_address)->send(new StaffAccountActivation($mailData));
 
             return redirect()->route('staff.index')->with('success', "Staff Added Successfully");
         } catch (Exception $exception) {
