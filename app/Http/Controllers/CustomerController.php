@@ -90,6 +90,7 @@ class CustomerController extends Controller
     {
         $customer = Customer::find($id);
         $customer_bills = CustomerBill::where('customer_id', $id)->get();
+        $no_of_bills = CustomerBill::count();
 
         $new_bill = [];
         for ($i = 0; $i < count($customer_bills); $i++) {
@@ -101,7 +102,7 @@ class CustomerController extends Controller
             array_push($new_bill_details, CustomerBillProduct::where('customerBill_id', $new_bill[$i])->get());
         }
 
-        return view('customer.profile', compact('customer', 'customer_bills', 'new_bill_details'));
+        return view('customer.profile', compact('customer', 'customer_bills', 'new_bill_details', 'no_of_bills'));
     }
 
     // customer change Status
