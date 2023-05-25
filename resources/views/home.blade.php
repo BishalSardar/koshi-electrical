@@ -301,8 +301,7 @@
                             Dashboard
                         </h1>
                         <p class="fw-medium mb-0 text-muted">
-                            Welcome, admin! You have <a class="fw-medium" href="javascript:void(0)">8 new
-                                notifications</a>.
+                            Welcome, admin!
                         </p>
                     </div>
                 </div>

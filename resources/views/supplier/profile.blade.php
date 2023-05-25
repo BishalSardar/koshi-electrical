@@ -53,21 +53,17 @@
             </div>
             <div class="block-content bg-body-light text-center">
                 <div class="row items-push text-uppercase">
-                    <div class="col-6 col-md-3">
+                    <div class="col-6 col-md-4">
                         <div class="fw-semibold text-dark mb-1">No of Bills</div>
-                        <a class="link-fx fs-3" href="javascript:void(0)">5</a>
+                        <a class="link-fx fs-3" href="javascript:void(0)">{{ $no_of_bills }}</a>
                     </div>
-                    <div class="col-6 col-md-3">
+                    <div class="col-6 col-md-4">
                         <div class="fw-semibold text-dark mb-1">Total Business Done</div>
-                        <a class="link-fx fs-3" href="javascript:void(0)">$5.680,00</a>
+                        <a class="link-fx fs-3" href="javascript:void(0)">Rs. {{ $total_business_done }}</a>
                     </div>
-                    <div class="col-6 col-md-3">
-                        <div class="fw-semibold text-dark mb-1">Profit</div>
-                        <a class="link-fx fs-3" href="javascript:void(0)">$5.680,00</a>
-                    </div>
-                    <div class="col-6 col-md-3">
+                    <div class="col-6 col-md-4">
                         <div class="fw-semibold text-dark mb-1">Date</div>
-                        <a class="link-fx fs-3" href="javascript:void(0)">4</a>
+                        <a class="link-fx fs-3" href="javascript:void(0)">{{ $supplier->created_at->format('Y-m-d') }}</a>
                     </div>
                 </div>
             </div>
@@ -87,37 +83,38 @@
                             <tr>
                                 <th>Bill ID</th>
                                 <th>Bill Date</th>
-                                <th>Total</th>
                                 <th>Discount</th>
                                 <th>Net Total</th>
                                 <th style="width: 15%;"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($customers as $customer)
-                            <tr>
-                                <td class="fw-semibold">
-                                    <strong>{{ $customer->name }}</strong>
-                                </td>
-                                <td>
-                                    <span>{{ $customer->phone }}</span>
-                                </td>
-                                <td>
-                                    <span>{{ $customer->address }}</span>
-                                </td>
-                                <td class="text-center fs-sm">
-                                    <a class="btn btn-sm btn-primary" href="{{ route('customer.profile', $customer->id) }}">
-                                        <i class="fa fa-fw fa-eye"></i>
-                                    </a>
-                                    <a class="btn btn-sm btn-secondary" href="{{ route('customer.edit', $customer->id) }}">
-                                        <i class="fa fa-fw fa-pen-to-square"></i>
-                                    </a>
-                                    <a class="btn btn-sm btn-danger" href="{{ route('customer.delete', $customer->id) }}">
-                                        <i class="fa fa-fw fa-trash-can"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        @endforeach --}}
+                            @foreach ($supplier_bills as $supplier_bill)
+                                <tr>
+                                    <td class="fw-semibold">
+                                        <strong>{{ $supplier_bill->id }}</strong>
+                                    </td>
+                                    <td>
+                                        <span>{{ $supplier_bill->invoice_date }}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{ $supplier_bill->discount }}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{ $supplier_bill->net_total_amount }}</span>
+                                    </td>
+                                    <td class="text-center fs-sm">
+                                        <a class="btn btn-sm btn-primary"
+                                            href="{{ route('supplier-bill.profile', $supplier_bill->id) }}">
+                                            <i class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                        <a class="btn btn-sm btn-danger"
+                                            href="{{ route('supplier-bill.delete', $supplier_bill->id) }}">
+                                            <i class="fa fa-fw fa-trash-can"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

@@ -55,7 +55,7 @@
                 <div class="row items-push text-uppercase">
                     <div class="col-6 col-md-3">
                         <div class="fw-semibold text-dark mb-1">Bills</div>
-                        <a class="link-fx fs-3" href="javascript:void(0)">5</a>
+                        <a class="link-fx fs-3" href="javascript:void(0)">{{ $no_of_bills }}</a>
                     </div>
                     <div class="col-6 col-md-3">
                         <div class="fw-semibold text-dark mb-1">Cr/Dr</div>

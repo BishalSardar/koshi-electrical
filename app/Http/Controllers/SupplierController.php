@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Supplier;
+use App\Models\SupplierBill;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -81,6 +82,12 @@ class SupplierController extends Controller
     public function supplierProfile($id)
     {
         $supplier = Supplier::find($id);
-        return view('supplier.profile', compact('supplier'));
+        $no_of_bills = SupplierBill::where('supplier_id', $supplier->id)->count();
+        $total_business_done = SupplierBill::where('supplier_id', $supplier->id)->sum('net_total_amount');
+
+        $supplier_bills = SupplierBill::where('supplier_id', $supplier->id)->get();
+
+
+        return view('supplier.profile', compact('supplier', 'no_of_bills', 'total_business_done', 'supplier_bills'));
     }
 }
