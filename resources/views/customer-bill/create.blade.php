@@ -5,7 +5,7 @@
     <div class="content">
         <div class="block block-rounded">
             <div class="block-header block-header-default">
-                <h3 class="block-title">Add Supplier Bill</h3>
+                <h3 class="block-title">Add customer Bill</h3>
             </div>
             <div class="block-content">
                 <div class="row">
