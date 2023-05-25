@@ -250,7 +250,7 @@
                                 {{-- <div role="separator" class="dropdown-divider"></div> --}}
 
                                 <a class="dropdown-item" href="{{ route('admin.password.edit') }}">
-                                    <i class="far fa-fw fa-pen-to-square me-1"></i> changePassword
+                                    <i class="far fa-fw fa-pen-to-square me-1"></i> Change Password
                                 </a>
 
                                 <div role="separator" class="dropdown-divider"></div>
